@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
     EnvelopeIcon,
     PhoneIcon,
@@ -8,13 +9,13 @@ import {
 const footerLinks = {
     services: [
         { href: "/services/email-marketing", label: "Email Marketing" },
-        { href: "/services/seo-optimisation", label: "SEO" },
-        { href: "/services/social-media", label: "Social Media" },
+        { href: "/services/seo-optimisation", label: "SEO Optimisation" },
+        { href: "/services/social-media", label: "Social Media Management" },
     ],
     company: [
         { href: "/", label: "Home" },
         { href: "/services", label: "Services" },
-        { href: "/about", label: "About" },
+        { href: "/about", label: "About Us" },
         { href: "/pricing", label: "Pricing" },
         { href: "/contact", label: "Contact" },
     ],
@@ -22,33 +23,46 @@ const footerLinks = {
 
 export default function Footer() {
     return (
-        <footer className="bg-navy text-white">
-            <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-                <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-                    {/* Brand */}
+        <footer className="relative bg-navy overflow-hidden text-white border-t border-white/5">
+            {/* Animated Fluid Background */}
+            <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
+                <Image
+                    src="/images/footer-bg-blob.png"
+                    alt="Abstract background"
+                    fill
+                    className="object-cover object-bottom opacity-70"
+                />
+            </div>
+
+            {/* Glass Overlay */}
+            <div className="absolute inset-0 bg-navy/80 backdrop-blur-[2px] z-0 pointer-events-none" />
+
+            <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:px-8">
+                <div className="grid grid-cols-1 gap-12 lg:gap-16 md:grid-cols-2 lg:grid-cols-4">
+                    {/* Brand Column */}
                     <div className="lg:col-span-1">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-electric text-white font-bold text-lg">
+                        <div className="flex items-center gap-3 mb-6">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-electric to-electric-dark text-white font-bold text-lg shadow-[0_0_15px_rgba(37,99,235,0.4)]">
                                 M&B
                             </div>
-                            <span className="text-xl font-bold">Strategy</span>
+                            <span className="text-2xl font-bold tracking-tight text-white">Strategy</span>
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                            Strategy-led marketing for modern brands.
+                        <p className="text-gray-400 text-sm leading-relaxed mb-8 pr-4">
+                            We don't just market brands — we build predictable strategies that drive scalable growth and measurable ROI.
                         </p>
                     </div>
 
                     {/* Services */}
                     <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
-                            Services
+                        <h3 className="text-sm font-semibold uppercase tracking-wider text-electric-light mb-6">
+                            Growth Services
                         </h3>
-                        <ul className="space-y-3">
+                        <ul className="space-y-4">
                             {footerLinks.services.map((link) => (
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm text-gray-400 hover:text-white transition-colors"
+                                        className="text-sm text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-300"
                                     >
                                         {link.label}
                                     </Link>
@@ -59,15 +73,15 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
-                            Quick Links
+                        <h3 className="text-sm font-semibold uppercase tracking-wider text-electric-light mb-6">
+                            Company
                         </h3>
-                        <ul className="space-y-3">
+                        <ul className="space-y-4">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm text-gray-400 hover:text-white transition-colors"
+                                        className="text-sm text-gray-400 hover:text-white hover:translate-x-1 inline-block transition-all duration-300"
                                     >
                                         {link.label}
                                     </Link>
@@ -76,49 +90,55 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Contact Info + CTA */}
+                    {/* Contact Info */}
                     <div>
-                        <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
-                            Get in Touch
+                        <h3 className="text-sm font-semibold uppercase tracking-wider text-electric-light mb-6">
+                            Contact Us
                         </h3>
-                        <ul className="space-y-3 mb-6">
-                            <li className="flex items-center gap-3 text-sm text-gray-400">
-                                <EnvelopeIcon className="h-4 w-4 text-electric" />
-                                hello@marketingnbrandingstrategy.com
+                        <ul className="space-y-4">
+                            <li className="flex items-start gap-4 text-sm text-gray-400 group">
+                                <div className="mt-0.5 flex-shrink-0 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-electric/20 group-hover:border-electric/30 transition-colors">
+                                    <EnvelopeIcon className="h-4 w-4 text-gray-300 group-hover:text-electric-light transition-colors" />
+                                </div>
+                                <span className="mt-1.5 hover:text-white transition-colors cursor-pointer">
+                                    hello@marketingnbrandingstrategy.com
+                                </span>
                             </li>
-                            <li className="flex items-center gap-3 text-sm text-gray-400">
-                                <PhoneIcon className="h-4 w-4 text-electric" />
-                                +1 (555) 000-0000
+                            <li className="flex items-start gap-4 text-sm text-gray-400 group">
+                                <div className="mt-0.5 flex-shrink-0 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-electric/20 group-hover:border-electric/30 transition-colors">
+                                    <PhoneIcon className="h-4 w-4 text-gray-300 group-hover:text-electric-light transition-colors" />
+                                </div>
+                                <span className="mt-1.5 hover:text-white transition-colors cursor-pointer">
+                                    +1 (555) 000-0000
+                                </span>
                             </li>
-                            <li className="flex items-center gap-3 text-sm text-gray-400">
-                                <MapPinIcon className="h-4 w-4 text-electric" />
-                                Global · Remote-first
+                            <li className="flex items-start gap-4 text-sm text-gray-400 group">
+                                <div className="mt-0.5 flex-shrink-0 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-electric/20 group-hover:border-electric/30 transition-colors">
+                                    <MapPinIcon className="h-4 w-4 text-gray-300 group-hover:text-electric-light transition-colors" />
+                                </div>
+                                <span className="mt-1.5 hover:text-white transition-colors cursor-pointer">
+                                    Global · Remote-first Agency
+                                </span>
                             </li>
                         </ul>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center justify-center rounded-full bg-electric px-5 py-2.5 text-sm font-semibold text-white hover:bg-electric-dark transition-colors btn-glow"
-                        >
-                            Free Strategy Call
-                        </Link>
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
-                <div className="mt-12 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <p className="text-xs text-gray-500">
+                {/* Bottom Bar — Glassy separation */}
+                <div className="mt-16 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <p className="text-xs text-gray-500 font-medium">
                         © {new Date().getFullYear()} M&B Strategy. All rights reserved.
                     </p>
-                    <div className="flex gap-6">
+                    <div className="flex gap-8">
                         <Link
                             href="#"
-                            className="text-xs text-gray-500 hover:text-white transition-colors"
+                            className="text-xs font-medium text-gray-500 hover:text-white transition-colors"
                         >
                             Privacy Policy
                         </Link>
                         <Link
                             href="#"
-                            className="text-xs text-gray-500 hover:text-white transition-colors"
+                            className="text-xs font-medium text-gray-500 hover:text-white transition-colors"
                         >
                             Terms of Service
                         </Link>

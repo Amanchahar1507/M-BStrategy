@@ -22,46 +22,56 @@ export default function PricingCard({
     return (
         <FadeIn delay={delay}>
             <div
-                className={`relative overflow-hidden rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 ${highlighted
-                        ? "bg-navy text-white shadow-2xl ring-2 ring-electric scale-105"
-                        : "bg-white text-navy border border-gray-200 shadow-sm hover:shadow-xl"
+                className={`relative overflow-hidden rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 ${highlighted
+                    ? "bg-gradient-to-br from-navy via-[#0d2847] to-[#1a1145] text-white shadow-2xl ring-2 ring-electric scale-105"
+                    : "bg-white text-navy border border-gray-100 shadow-md hover:shadow-2xl"
                     }`}
             >
+                {/* Decorative gradient orb on highlighted card */}
                 {highlighted && (
-                    <div className="absolute top-0 right-0 bg-electric text-white text-xs font-bold px-4 py-1 rounded-bl-xl">
-                        POPULAR
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-electric/20 rounded-full blur-[60px] -mr-10 -mt-10" />
+                )}
+
+                {highlighted && (
+                    <div className="absolute top-0 right-0 bg-gradient-to-l from-electric to-electric-light text-white text-xs font-bold px-5 py-1.5 rounded-bl-2xl tracking-wider">
+                        MOST POPULAR
                     </div>
                 )}
 
                 <h3
-                    className={`text-lg font-semibold ${highlighted ? "text-gray-300" : "text-gray-500"
+                    className={`text-sm font-semibold uppercase tracking-wider ${highlighted ? "text-electric-light" : "text-electric"
                         }`}
                 >
                     {name}
                 </h3>
-                <div className="mt-4 flex items-baseline gap-1">
-                    <span className="text-4xl font-bold">{price}</span>
+                <div className="mt-5 flex items-baseline gap-1">
+                    <span className={`text-5xl font-extrabold tracking-tight ${highlighted ? "text-white" : "text-navy"}`}>{price}</span>
                     <span
-                        className={`text-sm ${highlighted ? "text-gray-400" : "text-gray-400"
+                        className={`text-sm font-medium ${highlighted ? "text-gray-400" : "text-gray-400"
                             }`}
                     >
                         /month
                     </span>
                 </div>
                 <p
-                    className={`mt-3 text-sm ${highlighted ? "text-gray-300" : "text-gray-500"
+                    className={`mt-4 text-sm leading-relaxed ${highlighted ? "text-gray-300" : "text-gray-500"
                         }`}
                 >
                     {description}
                 </p>
 
-                <ul className="mt-8 space-y-3">
+                {/* Divider */}
+                <div className={`my-8 h-px ${highlighted ? "bg-white/10" : "bg-gray-100"}`} />
+
+                <ul className="space-y-4">
                     {features.map((feature) => (
                         <li key={feature} className="flex items-start gap-3">
-                            <CheckIcon
-                                className={`h-5 w-5 flex-shrink-0 ${highlighted ? "text-electric-light" : "text-electric"
-                                    }`}
-                            />
+                            <div className={`flex-shrink-0 mt-0.5 h-5 w-5 rounded-full flex items-center justify-center ${highlighted ? "bg-electric/20" : "bg-electric/10"}`}>
+                                <CheckIcon
+                                    className={`h-3 w-3 ${highlighted ? "text-electric-light" : "text-electric"
+                                        }`}
+                                />
+                            </div>
                             <span
                                 className={`text-sm ${highlighted ? "text-gray-300" : "text-gray-600"
                                     }`}
@@ -72,11 +82,11 @@ export default function PricingCard({
                     ))}
                 </ul>
 
-                <div className="mt-8">
+                <div className="mt-10">
                     <Button
                         href="/contact"
                         variant={highlighted ? "primary" : "outline"}
-                        className="w-full"
+                        className={`w-full ${highlighted ? "shadow-[0_0_25px_rgba(37,99,235,0.4)]" : "border-gray-200 hover:border-electric hover:text-electric"}`}
                     >
                         Get Started
                     </Button>

@@ -49,11 +49,10 @@ export default function AboutPage() {
                         src="/images/about_hero_v4.png"
                         alt="M&B Strategy Agency Office"
                         fill
-                        className="object-cover opacity-60 mix-blend-screen scale-105 animate-pulse-slow"
+                        className="object-cover opacity-70 scale-105"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/50 to-navy" />
-                    <div className="absolute inset-0 bg-navy/80" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/40 to-navy/90" />
                 </div>
 
                 {/* Ambient glowing orbs */}

@@ -169,7 +169,7 @@ export default function HomePage() {
               />
 
               <FadeIn delay={0.8}>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray-400">
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90">
                   We help brands scale through strategic Email Marketing, SEO
                   optimisation, and high-performing Social Media management —
                   built to convert, not just look good.
@@ -186,7 +186,7 @@ export default function HomePage() {
                   ].map((signal) => (
                     <span
                       key={signal}
-                      className="inline-flex items-center gap-1.5 text-sm text-gray-400"
+                      className="inline-flex items-center gap-1.5 text-sm text-gray-300"
                     >
                       <CheckBadgeIcon className="h-4 w-4 text-electric" />
                       {signal}

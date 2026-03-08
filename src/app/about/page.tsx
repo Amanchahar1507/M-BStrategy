@@ -241,22 +241,31 @@ export default function AboutPage() {
             </Section>
 
             {/* ====== IMMERSIVE CTA ====== */}
-            <section className="relative py-32 overflow-hidden bg-electric">
-                <div className="absolute inset-0 opacity-20">
-                    <div className="absolute inset-0 bg-[url('/images/noise.png')] mix-blend-overlay" />
-                    <div className="w-full h-full bg-gradient-to-r from-electric-dark to-electric" />
+            <section className="relative py-32 overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2847 40%, #1a1145 70%, #0a1628 100%)' }}>
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/images/about_cta_bg.png"
+                        alt="City Skyline at Twilight"
+                        fill
+                        className="object-cover opacity-30 mix-blend-screen"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-transparent to-[#0a1628]/60" />
                 </div>
+
+                {/* Ambient glow */}
+                <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[700px] h-[700px] bg-electric/15 blur-[120px] rounded-full pointer-events-none" />
 
                 <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
                     <FadeIn>
                         <h2 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl tracking-tight mb-8">
-                            Ready to partner with a team that <span className="text-electric-light italic">delivers?</span>
+                            Ready to partner with a team that <span className="italic gradient-text">delivers?</span>
                         </h2>
-                        <p className="text-xl text-white/90 max-w-2xl mx-auto mb-12 font-light">
-                            Stop guessing. Let's discuss how M&B Strategy can build the foundation to aggressively scale your presence and revenue.
+                        <p className="text-xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                            Stop guessing. Let&apos;s discuss how M&B Strategy can build the foundation to aggressively scale your presence and revenue.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-5 justify-center">
-                            <Button href="/contact" variant="outline" className="bg-white border-white text-electric font-bold text-lg px-8 py-4 shadow-xl hover:shadow-2xl hover:scale-105 hover:bg-white/90">
+                            <Button href="/contact" variant="primary" className="text-lg px-10 py-4 shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:shadow-[0_0_40px_rgba(37,99,235,0.7)] hover:scale-105 transition-all">
                                 Start Your Journey
                             </Button>
                         </div>

@@ -11,42 +11,76 @@ import {
   MapPinIcon,
   ClockIcon,
   CheckCircleIcon,
+  ExclamationCircleIcon,
+  PaperAirplaneIcon,
 } from "@heroicons/react/24/outline";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get("firstName") as string,
+      lastName: formData.get("lastName") as string,
+      email: formData.get("email") as string,
+      company: formData.get("company") as string,
+      service: formData.get("service") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const result = await res.json();
+        setError(result.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="overflow-hidden">
       {/* ====== IMMERSIVE HERO ====== */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2847 30%, #1a1145 60%, #0a1628 100%)' }}>
+      <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0f05 0%, #2a1810 30%, #1c1230 60%, #0a1628 100%)' }}>
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/contact_hero_bg.png"
             alt="Contact Us"
             fill
-            className="object-cover opacity-35 scale-105"
+            className="object-cover opacity-40 scale-105"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d2847]/30 to-[#0a1628]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a0f05]/60 via-transparent to-[#0a1628]/90" />
         </div>
 
-        {/* Ambient glow */}
+        {/* Warm amber + blue glow */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full opacity-30" style={{ background: "radial-gradient(circle, rgba(37, 99, 235, 0.5) 0%, transparent 70%)" }} />
-          <div className="absolute bottom-[-5%] left-[10%] w-[500px] h-[500px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%)" }} />
+          <div className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full opacity-30" style={{ background: "radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%)" }} />
+          <div className="absolute bottom-[-5%] left-[10%] w-[500px] h-[500px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, rgba(37, 99, 235, 0.3) 0%, transparent 70%)" }} />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <FadeIn>
-            <span className="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-electric/10 border border-electric/20 text-electric-light text-sm font-semibold mb-6 tracking-wide uppercase shadow-[0_0_15px_rgba(37,99,235,0.3)]">
+            <span className="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-sm font-semibold mb-6 tracking-wide uppercase shadow-[0_0_15px_rgba(245,158,11,0.3)]">
               <EnvelopeIcon className="h-4 w-4" />
-              Contact Us
+              Get in Touch
             </span>
           </FadeIn>
 
@@ -64,9 +98,10 @@ export default function ContactPage() {
       </section>
 
       {/* ====== FORM SECTION ====== */}
-      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8fafc 0%, #eef2ff 50%, #f5f3ff 100%)' }}>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-electric/5 rounded-full blur-[100px] -mt-32 -mr-32" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-[100px] -mb-32 -ml-32" />
+      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(180deg, #fffbeb 0%, #fef3c7 25%, #fef9c3 50%, #f8fafc 100%)' }}>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-[100px] -mt-32 -mr-32" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px] -mb-32 -ml-32" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/3 rounded-full blur-[120px]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-5">
@@ -74,8 +109,8 @@ export default function ContactPage() {
             <div className="lg:col-span-3">
               <FadeIn>
                 {submitted ? (
-                  <div className="rounded-3xl bg-white border border-green-100 shadow-xl p-12 text-center">
-                    <div className="mx-auto mb-6 h-20 w-20 rounded-full bg-green-50 flex items-center justify-center ring-8 ring-green-100/50">
+                  <div className="rounded-3xl bg-white border border-green-100 shadow-2xl p-12 text-center">
+                    <div className="mx-auto mb-6 h-20 w-20 rounded-full bg-green-50 flex items-center justify-center ring-8 ring-green-100/50 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
                       <CheckCircleIcon className="h-10 w-10 text-green-500" />
                     </div>
                     <h3 className="text-3xl font-bold text-navy">Thank You!</h3>
@@ -91,12 +126,22 @@ export default function ContactPage() {
                     </Button>
                   </div>
                 ) : (
-                  <div className="rounded-3xl bg-white shadow-xl border border-gray-100 p-8 sm:p-10">
+                  <div className="rounded-3xl bg-white shadow-2xl border border-amber-100/50 p-8 sm:p-10 ring-1 ring-black/5">
                     <div className="mb-8">
+                      <div className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-amber-50 border border-amber-200 mb-4">
+                        <PaperAirplaneIcon className="h-3.5 w-3.5 text-amber-600" />
+                        <span className="text-xs font-semibold text-amber-700 uppercase tracking-wider">Free Consultation</span>
+                      </div>
                       <h2 className="text-2xl font-bold text-navy">Send Us a Message</h2>
                       <p className="text-sm text-gray-400 mt-1">Fields marked with * are required</p>
                     </div>
 
+                    {error && (
+                      <div className="mb-6 flex items-center gap-3 p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm">
+                        <ExclamationCircleIcon className="h-5 w-5 flex-shrink-0" />
+                        {error}
+                      </div>
+                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid gap-6 sm:grid-cols-2">
@@ -109,7 +154,7 @@ export default function ContactPage() {
                             id="firstName"
                             name="firstName"
                             required
-                            className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-electric focus:ring-2 focus:ring-electric/20 focus:bg-white"
+                            className="w-full rounded-xl border border-gray-200 bg-amber-50/30 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:bg-white"
                             placeholder="John"
                           />
                         </div>
@@ -122,7 +167,7 @@ export default function ContactPage() {
                             id="lastName"
                             name="lastName"
                             required
-                            className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-electric focus:ring-2 focus:ring-electric/20 focus:bg-white"
+                            className="w-full rounded-xl border border-gray-200 bg-amber-50/30 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:bg-white"
                             placeholder="Doe"
                           />
                         </div>
@@ -137,7 +182,7 @@ export default function ContactPage() {
                           id="email"
                           name="email"
                           required
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-electric focus:ring-2 focus:ring-electric/20 focus:bg-white"
+                          className="w-full rounded-xl border border-gray-200 bg-amber-50/30 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:bg-white"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -150,7 +195,7 @@ export default function ContactPage() {
                           type="text"
                           id="company"
                           name="company"
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-electric focus:ring-2 focus:ring-electric/20 focus:bg-white"
+                          className="w-full rounded-xl border border-gray-200 bg-amber-50/30 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:bg-white"
                           placeholder="Acme Inc."
                         />
                       </div>
@@ -162,7 +207,7 @@ export default function ContactPage() {
                         <select
                           id="service"
                           name="service"
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3.5 text-sm text-navy outline-none transition-all focus:border-electric focus:ring-2 focus:ring-electric/20 focus:bg-white appearance-none cursor-pointer"
+                          className="w-full rounded-xl border border-gray-200 bg-amber-50/30 px-4 py-3.5 text-sm text-navy outline-none transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:bg-white appearance-none cursor-pointer"
                         >
                           <option value="">Select a service</option>
                           <option value="email">Email Marketing</option>
@@ -182,16 +227,30 @@ export default function ContactPage() {
                           name="message"
                           rows={5}
                           required
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-electric focus:ring-2 focus:ring-electric/20 focus:bg-white resize-none"
+                          className="w-full rounded-xl border border-gray-200 bg-amber-50/30 px-4 py-3.5 text-sm text-navy placeholder-gray-400 outline-none transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:bg-white resize-none"
                           placeholder="Tell us about your brand, current challenges, and what you're looking to achieve..."
                         />
                       </div>
 
                       <button
                         type="submit"
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-electric px-8 py-4 text-sm font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all hover:bg-electric-dark hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:scale-[1.02]"
+                        disabled={loading}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-8 py-4 text-sm font-semibold text-white shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all hover:from-amber-600 hover:to-orange-600 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                       >
-                        Book Your Free Strategy Call
+                        {loading ? (
+                          <>
+                            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                            </svg>
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <PaperAirplaneIcon className="h-4 w-4" />
+                            Book Your Free Strategy Call
+                          </>
+                        )}
                       </button>
                     </form>
                   </div>
@@ -204,7 +263,7 @@ export default function ContactPage() {
               <FadeIn delay={0.2}>
                 <div className="sticky top-32 space-y-6">
                   {/* Get in Touch Card */}
-                  <div className="rounded-3xl bg-white shadow-xl border border-gray-100 p-8 space-y-6">
+                  <div className="rounded-3xl bg-white shadow-2xl border border-amber-100/50 p-8 space-y-6 ring-1 ring-black/5">
                     <h3 className="text-xl font-bold text-navy">Get in Touch</h3>
                     <ul className="space-y-5">
                       {[
@@ -212,13 +271,13 @@ export default function ContactPage() {
                           icon: <EnvelopeIcon className="h-5 w-5" />,
                           label: "Email",
                           value: "hello@marketingnbrandingstrategy.com",
-                          color: "bg-electric/10 text-electric",
+                          color: "bg-amber-500/10 text-amber-600",
                         },
                         {
                           icon: <PhoneIcon className="h-5 w-5" />,
                           label: "Phone",
                           value: "+1 (555) 000-0000",
-                          color: "bg-purple-500/10 text-purple-600",
+                          color: "bg-orange-500/10 text-orange-600",
                         },
                         {
                           icon: <MapPinIcon className="h-5 w-5" />,
@@ -230,7 +289,7 @@ export default function ContactPage() {
                           icon: <ClockIcon className="h-5 w-5" />,
                           label: "Response Time",
                           value: "Within 24 business hours",
-                          color: "bg-amber-500/10 text-amber-600",
+                          color: "bg-blue-500/10 text-blue-600",
                         },
                       ].map((item) => (
                         <li key={item.label} className="flex items-start gap-4 group">
@@ -246,9 +305,10 @@ export default function ContactPage() {
                     </ul>
                   </div>
 
-                  {/* Quick Call Card */}
-                  <div className="rounded-3xl p-8 text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2847 50%, #1a1145 100%)' }}>
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-electric/20 rounded-full blur-3xl -mr-10 -mt-10" />
+                  {/* Quick Call Card — warm gradient */}
+                  <div className="rounded-3xl p-8 text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0f05 0%, #2a1810 50%, #1c1230 100%)' }}>
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/20 rounded-full blur-3xl -mr-10 -mt-10" />
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-orange-500/15 rounded-full blur-3xl -ml-8 -mb-8" />
                     <div className="relative z-10">
                       <h3 className="text-xl font-bold mb-3">Prefer a quick call?</h3>
                       <p className="text-sm text-white/70 mb-6 leading-relaxed">

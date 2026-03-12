@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface SectionProps {
     children: ReactNode;
-    variant?: "white" | "gray" | "navy";
+    variant?: "white" | "gray" | "dark";
     className?: string;
     id?: string;
 }
@@ -14,9 +14,9 @@ export default function Section({
     id,
 }: SectionProps) {
     const bgMap = {
-        white: "bg-white text-navy",
-        gray: "bg-soft-gray text-navy",
-        navy: "bg-navy text-white",
+        white: "bg-white text-dark",
+        gray: "bg-soft-gray text-dark",
+        dark: "bg-dark text-white",
     };
 
     return (

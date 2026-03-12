@@ -76,30 +76,30 @@ const results = [
 export default function SocialMediaPage() {
     return (
         <div className="overflow-hidden">
-            {/* ====== IMMERSIVE HERO (Purple/Magenta theme) ====== */}
-            <section className="relative min-h-[75vh] flex items-center pt-32 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 30%, #3b1f5c 50%, #1a0a2e 100%)' }}>
-                {/* Background Image */}
+            {/* ====== CORPORATE HERO ====== */}
+            <section className="relative min-h-[75vh] flex items-center pt-32 pb-20 overflow-hidden bg-white">
+                <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/images/social_hero_bg.png"
-                        alt="Social Media Command Center"
+                        alt="Social Media Management Background"
                         fill
-                        className="object-cover opacity-40 scale-105"
+                        className="object-cover opacity-10 scale-105 saturate-0"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2d1b4e]/30 to-[#1a0a2e]/90" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95" />
                 </div>
 
-                {/* Ambient glowing orbs — purple/magenta theme */}
-                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                    <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] rounded-full opacity-30" style={{ background: "radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, transparent 70%)" }} />
-                    <div className="absolute bottom-[-10%] left-[5%] w-[600px] h-[600px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%)" }} />
+                {/* Ambient glowing orbs — corporate theme */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden mix-blend-multiply opacity-20">
+                    <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] rounded-full" style={{ background: "radial-gradient(circle, rgba(79, 87, 223, 0.4) 0%, transparent 70%)" }} />
+                    <div className="absolute bottom-[-10%] left-[5%] w-[600px] h-[600px] rounded-full" style={{ background: "radial-gradient(circle, rgba(253, 214, 59, 0.3) 0%, transparent 70%)" }} />
                 </div>
 
                 <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center sm:text-left">
                     <div className="max-w-3xl">
                         <FadeIn>
-                            <span className="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-sm font-semibold mb-6 tracking-wide uppercase shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                            <span className="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
                                 <HeartIcon className="h-4 w-4" />
                                 Social Media Management
                             </span>
@@ -107,18 +107,18 @@ export default function SocialMediaPage() {
 
                         <TextGenerateEffect
                             words="Social Media That Builds Trust, Not Just Likes"
-                            className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-[1.1]"
+                            className="text-4xl font-bold text-dark sm:text-5xl lg:text-6xl leading-[1.1]"
                         />
 
                         <FadeIn delay={0.4}>
-                            <p className="mt-8 text-lg sm:text-xl text-white/80 leading-relaxed font-light max-w-2xl">
+                            <p className="mt-8 text-lg sm:text-xl text-gray-600 leading-relaxed font-light max-w-2xl">
                                 We manage your social presence with clarity, consistency, and creativity — aligned with your brand strategy and designed to convert followers into customers.
                             </p>
                             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                                <Button href="/contact" variant="primary" className="!bg-purple-600 hover:!bg-purple-700 shadow-[0_0_25px_rgba(168,85,247,0.5)]">
+                                <Button href="/contact" variant="primary" className="shadow-[0_4px_14px_0_rgba(79,87,223,0.39)]">
                                     Get a Free Social Audit
                                 </Button>
-                                <Button href="/pricing" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                                <Button href="/pricing" variant="outline" className="border-gray-300 text-dark hover:border-dark hover:bg-dark hover:text-white">
                                     View Pricing
                                 </Button>
                             </div>
@@ -127,16 +127,14 @@ export default function SocialMediaPage() {
                 </div>
             </section>
 
-            {/* ====== STATS STRIP (Purple theme) ====== */}
-            <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%)' }}>
-                <div className="absolute inset-0 z-0">
-                    <Image src="/images/social_hero_bg.png" alt="Social Media" fill className="object-cover opacity-10 mix-blend-screen" />
-                </div>
-                <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/15 blur-[100px] rounded-full pointer-events-none" />
+            {/* ====== STATS STRIP ====== */}
+            <section className="relative py-20 bg-primary overflow-hidden">
+                <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-20 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+                <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] bg-secondary/20 blur-[100px] rounded-full pointer-events-none" />
 
                 <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
                     <FadeIn className="text-center mb-12">
-                        <h2 className="text-2xl font-bold text-white sm:text-3xl">Built for <span className="text-purple-400">Engagement & Growth</span></h2>
+                        <h2 className="text-2xl font-bold text-white sm:text-3xl">Built for <span className="text-secondary">Engagement & Growth</span></h2>
                     </FadeIn>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {[
@@ -146,8 +144,8 @@ export default function SocialMediaPage() {
                             { value: 100, suffix: "+", label: "Brands Managed" },
                         ].map((stat, i) => (
                             <FadeIn key={stat.label} delay={i * 0.1}>
-                                <div className="group rounded-2xl bg-white/5 border border-purple-500/15 p-8 backdrop-blur-xl hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] text-center">
-                                    <StatsCounter value={stat.value} suffix={stat.suffix} label={stat.label} />
+                                <div className="group rounded-2xl bg-white/10 border border-white/20 p-8 hover:bg-white/20 transition-all duration-300 shadow-xl text-center">
+                                    <StatsCounter value={stat.value} suffix={stat.suffix} label={stat.label} light={true} />
                                 </div>
                             </FadeIn>
                         ))}
@@ -168,7 +166,7 @@ export default function SocialMediaPage() {
                                     <SparklesIcon className="h-4 w-4 text-purple-600" />
                                     <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider">Our Approach</span>
                                 </div>
-                                <h2 className="text-3xl font-bold text-navy sm:text-4xl lg:text-5xl leading-tight">
+                                <h2 className="text-3xl font-bold text-dark sm:text-4xl lg:text-5xl leading-tight">
                                     Social Media Done <span className="text-purple-600">Strategically</span>
                                 </h2>
                                 <p className="text-lg text-gray-500 leading-relaxed">
@@ -182,7 +180,7 @@ export default function SocialMediaPage() {
                                     marketing strategy.
                                 </p>
                                 <div className="relative pl-6 border-l-4 border-purple-500 my-8 py-4 bg-white/80 rounded-r-2xl pr-6 shadow-sm">
-                                    <p className="text-xl text-navy leading-relaxed font-bold italic">
+                                    <p className="text-xl text-dark leading-relaxed font-bold italic">
                                         &ldquo;Your brand is what people say about you when you&apos;re not in the room. Social media shapes that conversation.&rdquo;
                                     </p>
                                 </div>
@@ -209,17 +207,14 @@ export default function SocialMediaPage() {
                 </div>
             </section>
 
-            {/* ====== SERVICES GRID (Dark Purple Glassmorphism) ====== */}
-            <section className="relative py-28 overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 30%, #3b1f5c 60%, #1a0a2e 100%)' }}>
-                <div className="absolute inset-0 opacity-15 mix-blend-screen pointer-events-none">
-                    <Image src="/images/social_hero_bg.png" alt="Texture" fill className="object-cover rotate-180 scale-125 grayscale" />
-                </div>
-                <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[800px] h-[800px] bg-purple-500/15 blur-[120px] rounded-full pointer-events-none" />
+            {/* ====== SERVICES GRID ====== */}
+            <section className="relative py-28 bg-soft-gray overflow-hidden border-y border-gray-200">
+                <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-40 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
                 <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
                     <FadeIn>
-                        <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">Our Social Media <span className="text-purple-400">Services</span></h2>
-                        <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-6">
+                        <h2 className="text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">Our Social Media <span className="text-primary">Services</span></h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
                             Everything you need to build and grow your social presence, managed end-to-end.
                         </p>
                     </FadeIn>
@@ -229,13 +224,12 @@ export default function SocialMediaPage() {
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {services.map((f, i) => (
                             <FadeIn key={f.title} delay={i * 0.08}>
-                                <div className="group relative h-full rounded-3xl bg-white/5 border border-purple-500/15 p-8 hover:bg-white/10 transition-all duration-300 backdrop-blur-xl overflow-hidden shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]">
-                                    <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-3xl -mr-8 -mt-8 group-hover:bg-purple-500/20 transition-colors" />
-                                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/10 border border-purple-500/30 text-purple-300 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                                <div className="group relative h-full rounded-3xl bg-white border border-gray-100 p-8 hover:bg-gray-50 transition-all duration-300 overflow-hidden shadow-lg shadow-gray-200/50 hover:-translate-y-1">
+                                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 border border-primary/20 text-primary group-hover:scale-110 transition-transform shadow-sm">
                                         {f.icon}
                                     </div>
-                                    <h3 className="text-lg font-bold text-white mb-2 tracking-wide">{f.title}</h3>
-                                    <p className="text-sm text-gray-400 leading-relaxed font-light">{f.desc}</p>
+                                    <h3 className="text-lg font-bold text-dark mb-2 tracking-wide">{f.title}</h3>
+                                    <p className="text-sm text-gray-500 leading-relaxed font-light">{f.desc}</p>
                                 </div>
                             </FadeIn>
                         ))}
@@ -254,7 +248,7 @@ export default function SocialMediaPage() {
                             <MegaphoneIcon className="h-4 w-4 text-purple-600" />
                             <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider">Platforms</span>
                         </div>
-                        <h2 className="text-3xl font-bold text-navy sm:text-4xl lg:text-5xl">Platforms We <span className="text-purple-600">Work With</span></h2>
+                        <h2 className="text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">Platforms We <span className="text-purple-600">Work With</span></h2>
                     </FadeIn>
 
                     <div className="flex flex-wrap justify-center gap-6">
@@ -288,7 +282,7 @@ export default function SocialMediaPage() {
                                     <ArrowTrendingUpIcon className="h-4 w-4 text-purple-600" />
                                     <span className="text-sm font-semibold text-purple-600 uppercase tracking-wider">Results</span>
                                 </div>
-                                <h2 className="text-3xl font-bold text-navy sm:text-4xl leading-tight">
+                                <h2 className="text-3xl font-bold text-dark sm:text-4xl leading-tight">
                                     What You Can <span className="text-purple-600">Expect</span>
                                 </h2>
                                 <p className="text-lg text-gray-500 leading-relaxed">
@@ -298,7 +292,7 @@ export default function SocialMediaPage() {
                                     {results.map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-purple-500/10 shadow-sm hover:shadow-md hover:border-purple-500/20 transition-all">
                                             <CheckCircleIcon className="h-5 w-5 text-purple-500 flex-shrink-0" />
-                                            <span className="text-sm font-medium text-navy">{item}</span>
+                                            <span className="text-sm font-medium text-dark">{item}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -312,7 +306,7 @@ export default function SocialMediaPage() {
                                     <HeartIcon className="h-4 w-4 text-pink-600" />
                                     <span className="text-sm font-semibold text-pink-600 uppercase tracking-wider">Who It&apos;s For</span>
                                 </div>
-                                <h2 className="text-3xl font-bold text-navy sm:text-4xl leading-tight">
+                                <h2 className="text-3xl font-bold text-dark sm:text-4xl leading-tight">
                                     Is Social Media Management <span className="text-pink-600">Right for You?</span>
                                 </h2>
                                 <p className="text-lg text-gray-500 leading-relaxed">
@@ -322,7 +316,7 @@ export default function SocialMediaPage() {
                                     {["Founders too busy to manage their socials", "Brands with inconsistent posting & visuals", "Businesses wanting professional content creation", "Companies ready to turn followers into clients"].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-pink-500/10 shadow-sm hover:shadow-md hover:border-pink-500/20 transition-all">
                                             <CheckCircleIcon className="h-5 w-5 text-pink-500 flex-shrink-0" />
-                                            <span className="text-sm font-medium text-navy">{item}</span>
+                                            <span className="text-sm font-medium text-dark">{item}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -332,24 +326,22 @@ export default function SocialMediaPage() {
                 </div>
             </section>
 
-            {/* ====== IMMERSIVE CTA ====== */}
-            <section className="relative py-32 overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 40%, #3b1f5c 70%, #1a0a2e 100%)' }}>
-                <div className="absolute inset-0 z-0">
-                    <Image src="/images/social_hero_bg.png" alt="Social Media" fill className="object-cover opacity-20 mix-blend-screen" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e]/80 via-transparent to-[#1a0a2e]/60" />
-                </div>
-                <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[700px] h-[700px] bg-purple-500/15 blur-[120px] rounded-full pointer-events-none" />
+            {/* ====== CORPORATE CTA ====== */}
+            <section className="relative py-32 overflow-hidden bg-white border-t border-gray-200">
+                <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-30 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+
+                <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[700px] h-[700px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
                 <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
                     <FadeIn>
-                        <h2 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl tracking-tight mb-8">
-                            Ready to level up your <span className="italic text-purple-400">social presence?</span>
+                        <h2 className="text-4xl font-bold text-dark sm:text-5xl lg:text-6xl tracking-tight mb-8">
+                            Ready to level up your <span className="italic text-primary">social presence?</span>
                         </h2>
-                        <p className="text-xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
                             Book a free brand audit and let&apos;s discuss how we can transform your social media into a growth engine for your business.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-5 justify-center">
-                            <Button href="/contact" variant="primary" className="!bg-purple-600 hover:!bg-purple-700 text-lg px-10 py-4 shadow-[0_0_30px_rgba(168,85,247,0.5)] hover:shadow-[0_0_40px_rgba(168,85,247,0.7)] hover:scale-105 transition-all">
+                            <Button href="/contact" variant="primary" className="text-lg px-10 py-4 shadow-[0_4px_14px_0_rgba(79,87,223,0.39)] hover:shadow-[0_6px_20px_rgba(79,87,223,0.23)] hover:-translate-y-1 transition-all">
                                 Book a Free Social Media Consultation
                             </Button>
                         </div>

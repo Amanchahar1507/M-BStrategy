@@ -16,11 +16,11 @@ export default function SectionHeading({
     return (
         <FadeIn className={`mb-14 ${centered ? "text-center" : ""}`}>
             <div
-                className={`mb-4 h-1 w-12 rounded-full bg-electric ${centered ? "mx-auto" : ""
+                className={`mb-4 h-1 w-12 rounded-full bg-primary ${centered ? "mx-auto" : ""
                     }`}
             />
             <h2
-                className={`text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl ${light ? "text-white" : "text-navy"
+                className={`text-3xl font-bold tracking-tight sm:text-4xl ${light ? "text-white" : "text-dark"
                     }`}
             >
                 {title}

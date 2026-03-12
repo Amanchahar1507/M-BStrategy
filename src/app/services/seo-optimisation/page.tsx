@@ -69,30 +69,30 @@ const results = [
 export default function SEOPage() {
     return (
         <div className="overflow-hidden">
-            {/* ====== IMMERSIVE HERO (Emerald/Teal theme) ====== */}
-            <section className="relative min-h-[75vh] flex items-center pt-32 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #021a0e 0%, #0a2e1c 30%, #0d3b2a 50%, #062419 100%)' }}>
-                {/* Background Image */}
+            {/* ====== CORPORATE HERO ====== */}
+            <section className="relative min-h-[75vh] flex items-center pt-32 pb-20 overflow-hidden bg-white">
+                <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/images/seo_hero_bg.png"
-                        alt="SEO Analytics Command Center"
+                        alt="SEO Analytics Background"
                         fill
-                        className="object-cover opacity-40 scale-105"
+                        className="object-cover opacity-10 scale-105 saturate-0"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a2e1c]/30 to-[#021a0e]/90" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95" />
                 </div>
 
-                {/* Ambient glowing orbs — green theme */}
-                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                    <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] rounded-full opacity-30" style={{ background: "radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, transparent 70%)" }} />
-                    <div className="absolute bottom-[-10%] left-[5%] w-[600px] h-[600px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, rgba(20, 184, 166, 0.4) 0%, transparent 70%)" }} />
+                {/* Ambient glowing orbs — corporate theme */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden mix-blend-multiply opacity-20">
+                    <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] rounded-full" style={{ background: "radial-gradient(circle, rgba(79, 87, 223, 0.4) 0%, transparent 70%)" }} />
+                    <div className="absolute bottom-[-10%] left-[5%] w-[600px] h-[600px] rounded-full" style={{ background: "radial-gradient(circle, rgba(253, 214, 59, 0.3) 0%, transparent 70%)" }} />
                 </div>
 
                 <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center sm:text-left">
                     <div className="max-w-3xl">
                         <FadeIn>
-                            <span className="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold mb-6 tracking-wide uppercase shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                            <span className="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
                                 <MagnifyingGlassIcon className="h-4 w-4" />
                                 SEO Optimisation
                             </span>
@@ -100,18 +100,18 @@ export default function SEOPage() {
 
                         <TextGenerateEffect
                             words="SEO Optimisation That Puts Your Brand on Page One"
-                            className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-[1.1]"
+                            className="text-4xl font-bold text-dark sm:text-5xl lg:text-6xl leading-[1.1]"
                         />
 
                         <FadeIn delay={0.4}>
-                            <p className="mt-8 text-lg sm:text-xl text-white/80 leading-relaxed font-light max-w-2xl">
+                            <p className="mt-8 text-lg sm:text-xl text-gray-600 leading-relaxed font-light max-w-2xl">
                                 We help your ideal customers find you organically through search-led strategies that compound over time — not quick fixes, but lasting results.
                             </p>
                             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                                <Button href="/contact" variant="primary" className="!bg-emerald-500 hover:!bg-emerald-600 shadow-[0_0_25px_rgba(16,185,129,0.5)]">
+                                <Button href="/contact" variant="primary" className="shadow-[0_4px_14px_0_rgba(79,87,223,0.39)]">
                                     Get a Free SEO Audit
                                 </Button>
-                                <Button href="/pricing" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                                <Button href="/pricing" variant="outline" className="border-gray-300 text-dark hover:border-dark hover:bg-dark hover:text-white">
                                     View Pricing
                                 </Button>
                             </div>
@@ -120,16 +120,14 @@ export default function SEOPage() {
                 </div>
             </section>
 
-            {/* ====== STATS STRIP (Emerald theme) ====== */}
-            <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #021a0e 0%, #0a2e1c 50%, #062419 100%)' }}>
-                <div className="absolute inset-0 z-0">
-                    <Image src="/images/seo_hero_bg.png" alt="SEO" fill className="object-cover opacity-10 mix-blend-screen" />
-                </div>
-                <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/15 blur-[100px] rounded-full pointer-events-none" />
+            {/* ====== STATS STRIP ====== */}
+            <section className="relative py-20 bg-primary overflow-hidden">
+                <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-20 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+                <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] bg-secondary/20 blur-[100px] rounded-full pointer-events-none" />
 
                 <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
                     <FadeIn className="text-center mb-12">
-                        <h2 className="text-2xl font-bold text-white sm:text-3xl">SEO Delivers <span className="text-emerald-400">Compounding Returns</span></h2>
+                        <h2 className="text-2xl font-bold text-white sm:text-3xl">SEO Delivers <span className="text-secondary">Compounding Returns</span></h2>
                     </FadeIn>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {[
@@ -139,8 +137,8 @@ export default function SEOPage() {
                             { value: 99, suffix: "%", label: "Client Retention" },
                         ].map((stat, i) => (
                             <FadeIn key={stat.label} delay={i * 0.1}>
-                                <div className="group rounded-2xl bg-white/5 border border-emerald-500/15 p-8 backdrop-blur-xl hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] text-center">
-                                    <StatsCounter value={stat.value} suffix={stat.suffix} label={stat.label} />
+                                <div className="group rounded-2xl bg-white/10 border border-white/20 p-8 hover:bg-white/20 transition-all duration-300 shadow-xl text-center">
+                                    <StatsCounter value={stat.value} suffix={stat.suffix} label={stat.label} light={true} />
                                 </div>
                             </FadeIn>
                         ))}
@@ -161,7 +159,7 @@ export default function SEOPage() {
                                     <MagnifyingGlassIcon className="h-4 w-4 text-emerald-600" />
                                     <span className="text-sm font-semibold text-emerald-600 uppercase tracking-wider">Our Philosophy</span>
                                 </div>
-                                <h2 className="text-3xl font-bold text-navy sm:text-4xl lg:text-5xl leading-tight">
+                                <h2 className="text-3xl font-bold text-dark sm:text-4xl lg:text-5xl leading-tight">
                                     Search-Led Growth That <span className="text-emerald-600">Compounds</span>
                                 </h2>
                                 <p className="text-lg text-gray-500 leading-relaxed">
@@ -175,7 +173,7 @@ export default function SEOPage() {
                                     designed to build long-term organic authority.
                                 </p>
                                 <div className="relative pl-6 border-l-4 border-emerald-500 my-8 py-4 bg-white/80 rounded-r-2xl pr-6 shadow-sm">
-                                    <p className="text-xl text-navy leading-relaxed font-bold italic">
+                                    <p className="text-xl text-dark leading-relaxed font-bold italic">
                                         &ldquo;The best time to invest in SEO was yesterday. The second best time is now.&rdquo;
                                     </p>
                                 </div>
@@ -202,17 +200,14 @@ export default function SEOPage() {
                 </div>
             </section>
 
-            {/* ====== SERVICES GRID (Dark Emerald Glassmorphism) ====== */}
-            <section className="relative py-28 overflow-hidden" style={{ background: 'linear-gradient(135deg, #021a0e 0%, #0a2e1c 30%, #0d3b2a 60%, #062419 100%)' }}>
-                <div className="absolute inset-0 opacity-15 mix-blend-screen pointer-events-none">
-                    <Image src="/images/seo_hero_bg.png" alt="Texture" fill className="object-cover rotate-180 scale-125 grayscale" />
-                </div>
-                <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[800px] h-[800px] bg-emerald-500/15 blur-[120px] rounded-full pointer-events-none" />
+            {/* ====== SERVICES GRID ====== */}
+            <section className="relative py-28 bg-soft-gray overflow-hidden border-y border-gray-200">
+                <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-40 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
                 <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
                     <FadeIn>
-                        <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">Our SEO <span className="text-emerald-400">Services</span></h2>
-                        <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-6">
+                        <h2 className="text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">Our SEO <span className="text-primary">Services</span></h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-6">
                             Everything you need to dominate search, managed end-to-end with full transparency.
                         </p>
                     </FadeIn>
@@ -222,13 +217,12 @@ export default function SEOPage() {
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {services.map((f, i) => (
                             <FadeIn key={f.title} delay={i * 0.08}>
-                                <div className="group relative h-full rounded-3xl bg-white/5 border border-emerald-500/15 p-8 hover:bg-white/10 transition-all duration-300 backdrop-blur-xl overflow-hidden shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]">
-                                    <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-3xl -mr-8 -mt-8 group-hover:bg-emerald-500/20 transition-colors" />
-                                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 border border-emerald-500/30 text-emerald-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                                <div className="group relative h-full rounded-3xl bg-white border border-gray-100 p-8 hover:bg-gray-50 transition-all duration-300 overflow-hidden shadow-lg shadow-gray-200/50 hover:-translate-y-1">
+                                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 border border-primary/20 text-primary group-hover:scale-110 transition-transform shadow-sm">
                                         {f.icon}
                                     </div>
-                                    <h3 className="text-lg font-bold text-white mb-2 tracking-wide">{f.title}</h3>
-                                    <p className="text-sm text-gray-400 leading-relaxed font-light">{f.desc}</p>
+                                    <h3 className="text-lg font-bold text-dark mb-2 tracking-wide">{f.title}</h3>
+                                    <p className="text-sm text-gray-500 leading-relaxed font-light">{f.desc}</p>
                                 </div>
                             </FadeIn>
                         ))}
@@ -253,7 +247,7 @@ export default function SEOPage() {
                                     <ArrowTrendingUpIcon className="h-4 w-4 text-emerald-600" />
                                     <span className="text-sm font-semibold text-emerald-600 uppercase tracking-wider">Results</span>
                                 </div>
-                                <h2 className="text-3xl font-bold text-navy sm:text-4xl leading-tight">
+                                <h2 className="text-3xl font-bold text-dark sm:text-4xl leading-tight">
                                     What You Can <span className="text-emerald-600">Expect</span>
                                 </h2>
                                 <p className="text-lg text-gray-500 leading-relaxed">
@@ -263,7 +257,7 @@ export default function SEOPage() {
                                     {results.map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-emerald-500/10 shadow-sm hover:shadow-md hover:border-emerald-500/20 transition-all">
                                             <CheckCircleIcon className="h-5 w-5 text-emerald-500 flex-shrink-0" />
-                                            <span className="text-sm font-medium text-navy">{item}</span>
+                                            <span className="text-sm font-medium text-dark">{item}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -277,7 +271,7 @@ export default function SEOPage() {
                                     <GlobeAltIcon className="h-4 w-4 text-teal-600" />
                                     <span className="text-sm font-semibold text-teal-600 uppercase tracking-wider">Who It&apos;s For</span>
                                 </div>
-                                <h2 className="text-3xl font-bold text-navy sm:text-4xl leading-tight">
+                                <h2 className="text-3xl font-bold text-dark sm:text-4xl leading-tight">
                                     Is SEO Right for <span className="text-teal-600">Your Business?</span>
                                 </h2>
                                 <p className="text-lg text-gray-500 leading-relaxed">
@@ -287,7 +281,7 @@ export default function SEOPage() {
                                     {["E-commerce brands tired of rising ad costs", "SaaS platforms wanting organic user acquisition", "Service businesses targeting local & national reach", "Brands ready to build lasting digital authority"].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-teal-500/10 shadow-sm hover:shadow-md hover:border-teal-500/20 transition-all">
                                             <CheckCircleIcon className="h-5 w-5 text-teal-500 flex-shrink-0" />
-                                            <span className="text-sm font-medium text-navy">{item}</span>
+                                            <span className="text-sm font-medium text-dark">{item}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -297,24 +291,22 @@ export default function SEOPage() {
                 </div>
             </section>
 
-            {/* ====== IMMERSIVE CTA ====== */}
-            <section className="relative py-32 overflow-hidden" style={{ background: 'linear-gradient(135deg, #021a0e 0%, #0a2e1c 40%, #0d3b2a 70%, #021a0e 100%)' }}>
-                <div className="absolute inset-0 z-0">
-                    <Image src="/images/seo_hero_bg.png" alt="SEO Dashboard" fill className="object-cover opacity-20 mix-blend-screen" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#021a0e]/80 via-transparent to-[#021a0e]/60" />
-                </div>
-                <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[700px] h-[700px] bg-emerald-500/15 blur-[120px] rounded-full pointer-events-none" />
+            {/* ====== CORPORATE CTA ====== */}
+            <section className="relative py-32 overflow-hidden bg-white border-t border-gray-200">
+                <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-30 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+
+                <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[700px] h-[700px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
                 <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
                     <FadeIn>
-                        <h2 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl tracking-tight mb-8">
-                            Ready to rank <span className="italic text-emerald-400">higher?</span>
+                        <h2 className="text-4xl font-bold text-dark sm:text-5xl lg:text-6xl tracking-tight mb-8">
+                            Ready to rank <span className="italic text-primary">higher?</span>
                         </h2>
-                        <p className="text-xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
                             Get a free technical audit and discover your SEO opportunities. We&apos;ll show you exactly where you&apos;re losing traffic — and how to win it back.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-5 justify-center">
-                            <Button href="/contact" variant="primary" className="!bg-emerald-500 hover:!bg-emerald-600 text-lg px-10 py-4 shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:shadow-[0_0_40px_rgba(16,185,129,0.7)] hover:scale-105 transition-all">
+                            <Button href="/contact" variant="primary" className="text-lg px-10 py-4 shadow-[0_4px_14px_0_rgba(79,87,223,0.39)] hover:shadow-[0_6px_20px_rgba(79,87,223,0.23)] hover:-translate-y-1 transition-all">
                                 Schedule Your SEO Strategy Call
                             </Button>
                         </div>

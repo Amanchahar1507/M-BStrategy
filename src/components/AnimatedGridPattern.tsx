@@ -51,7 +51,7 @@ export default function AnimatedGridPattern({ className = "" }: { className?: st
             {[...Array(12)].map((_, i) => (
                 <motion.div
                     key={i}
-                    className="absolute h-1.5 w-1.5 rounded-full bg-electric/20"
+                    className="absolute h-1.5 w-1.5 rounded-full bg-primary/20"
                     style={{
                         top: `${15 + (i * 7) % 80}%`,
                         left: `${10 + (i * 13) % 85}%`,

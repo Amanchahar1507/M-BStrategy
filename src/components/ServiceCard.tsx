@@ -24,15 +24,15 @@ export default function ServiceCard({
             <Link href={href} className="group block">
                 <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                     {/* Hover gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-electric/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     <div className="relative z-10">
-                        <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-electric/10 text-electric transition-colors group-hover:bg-electric group-hover:text-white">
+                        <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                             {icon}
                         </div>
-                        <h3 className="mb-3 text-xl font-bold text-navy">{title}</h3>
+                        <h3 className="mb-3 text-xl font-bold text-dark">{title}</h3>
                         <p className="text-sm leading-relaxed text-gray-500">{description}</p>
-                        <div className="mt-4 inline-flex items-center text-sm font-semibold text-electric group-hover:gap-2 transition-all">
+                        <div className="mt-4 inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 transition-all">
                             {linkText}
                             <svg
                                 className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"

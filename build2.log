@@ -1,0 +1,25 @@
+
+> mb-strategy@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/app/page.tsx:42:9
+Parsing ecmascript source code failed
+[0m [90m 40 |[39m     {[90m/* ===== HERO — CLEAN CORPORATE AESTHETIC ===== */[39m }
+ [90m 41 |[39m     [33m<[39m section
+[31m[1m>[22m[39m[90m 42 |[39m         ref [33m=[39m { heroRef }
+ [90m    |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 43 |[39m   className [33m=[39m [32m"relative min-h-screen flex items-center overflow-hidden bg-white"[39m
+ [90m 44 |[39m     [33m>[39m
+ [90m 45 |[39m     {[90m/* Subtle grid pattern background for corporate feel */[39m }[0m
+
+Expected ',', got 'ident'
+
+
+    at <unknown> (./src/app/page.tsx:42:9)

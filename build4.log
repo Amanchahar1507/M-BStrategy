@@ -1,0 +1,23 @@
+
+> mb-strategy@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 18.2s
+  Running TypeScript ...
+Failed to compile.
+
+./src/app/services/page.tsx:295:53
+Type error: Type '"accent"' is not assignable to type '"outline" | "primary" | "secondary" | undefined'.
+
+[0m [90m 293 |[39m                         [33m<[39m[33m/[39m[33mp[39m[33m>[39m
+ [90m 294 |[39m                         [33m<[39m[33mdiv[39m className[33m=[39m[32m"flex flex-col sm:flex-row gap-5 justify-center"[39m[33m>[39m
+[31m[1m>[22m[39m[90m 295 |[39m                             [33m<[39m[33mButton[39m href[33m=[39m[32m"/contact"[39m variant[33m=[39m[32m"accent"[39m className[33m=[39m[32m"text-lg px-10 py-4 hover:scale-105 transition-all text-dark"[39m[33m>[39m
+ [90m     |[39m                                                     [31m[1m^[22m[39m
+ [90m 296 |[39m                                 [33mBook[39m [33mYour[39m [33mFree[39m [33mStrategy[39m [33mSession[39m
+ [90m 297 |[39m                             [33m<[39m[33m/[39m[33mButton[39m[33m>[39m
+ [90m 298 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+Next.js build worker exited with code: 1 and signal: null

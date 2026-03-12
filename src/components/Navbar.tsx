@@ -34,10 +34,10 @@ export default function Navbar() {
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-electric text-white font-bold text-lg">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white font-bold text-lg">
                         M&B
                     </div>
-                    <span className="text-xl font-bold text-navy hidden sm:block">
+                    <span className="text-xl font-bold text-dark hidden sm:block">
                         Strategy
                     </span>
                 </Link>
@@ -48,14 +48,14 @@ export default function Navbar() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="animated-underline text-sm font-medium text-gray-600 hover:text-navy transition-colors"
+                            className="animated-underline text-sm font-medium text-gray-600 hover:text-dark transition-colors"
                         >
                             {link.label}
                         </Link>
                     ))}
                     <Link
                         href="/contact"
-                        className="btn-glow rounded-full bg-electric px-6 py-2.5 text-sm font-semibold text-white hover:bg-electric-dark transition-colors"
+                        className="btn-glow rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary-dark transition-colors"
                     >
                         Get Started
                     </Link>
@@ -63,7 +63,7 @@ export default function Navbar() {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden p-2 text-navy"
+                    className="md:hidden p-2 text-dark"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >
@@ -90,7 +90,7 @@ export default function Navbar() {
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-sm font-medium text-gray-600 hover:text-navy py-2 transition-colors"
+                                    className="text-sm font-medium text-gray-600 hover:text-dark py-2 transition-colors"
                                 >
                                     {link.label}
                                 </Link>
@@ -98,7 +98,7 @@ export default function Navbar() {
                             <Link
                                 href="/contact"
                                 onClick={() => setIsOpen(false)}
-                                className="btn-glow mt-2 rounded-full bg-electric px-6 py-2.5 text-sm font-semibold text-white text-center hover:bg-electric-dark transition-colors"
+                                className="btn-glow mt-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white text-center hover:bg-primary-dark transition-colors"
                             >
                                 Get Started
                             </Link>

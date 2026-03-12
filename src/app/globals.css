@@ -2,12 +2,15 @@
 
 /* ===== Design Tokens ===== */
 @theme inline {
-  --color-navy: #0B1C2D;
-  --color-navy-light: #132d47;
-  --color-navy-dark: #071420;
-  --color-electric: #2563EB;
-  --color-electric-light: #3b82f6;
-  --color-electric-dark: #1d4ed8;
+  --color-primary: #5170FF;
+  --color-primary-light: #7690ff;
+  --color-primary-dark: #3b50c4;
+  --color-secondary: #FCBD21;
+  --color-secondary-light: #fdd054;
+  --color-secondary-dark: #d69f1a;
+  --color-dark: #282739;
+  --color-dark-light: #3a3952;
+  --color-dark-dark: #171624;
   --color-soft-gray: #F8FAFC;
   --color-gray-100: #f1f5f9;
   --color-gray-200: #e2e8f0;
@@ -18,12 +21,14 @@
   --color-gray-700: #334155;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: #FCBD21;
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-open-sans: "Open Sans", system-ui, sans-serif;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #0B1C2D;
+  --foreground: #2B2D42;
 }
 
 /* ===== Base Styles ===== */
@@ -38,20 +43,21 @@ body {
 }
 
 ::selection {
-  background-color: #2563EB;
-  color: #ffffff;
+  background-color: #FDD63B;
+  color: #2B2D42;
 }
 
 /* ===== Glassmorphism ===== */
 .glass {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
 .glass-dark {
-  background: rgba(11, 28, 45, 0.85);
+  background: rgba(43, 45, 66, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);

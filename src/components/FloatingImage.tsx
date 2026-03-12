@@ -46,7 +46,7 @@ export default function FloatingImage({
                 />
             </div>
             {/* Glow shadow */}
-            <div className="absolute -inset-4 -z-10 rounded-3xl bg-electric/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute -inset-4 -z-10 rounded-3xl bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
         </motion.div>
     );
 }

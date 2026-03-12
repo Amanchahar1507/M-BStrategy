@@ -13,6 +13,7 @@ import MovingBorderCard from "@/components/MovingBorderCard";
 import InfiniteMarquee from "@/components/InfiniteMarquee";
 import AnimatedGridPattern from "@/components/AnimatedGridPattern";
 import FloatingImage from "@/components/FloatingImage";
+import BlobImage from "@/components/BlobImage";
 import {
   EnvelopeIcon,
   MagnifyingGlassIcon,
@@ -38,124 +39,47 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ===== HERO — FOUND.CO.UK STYLE IMMERSIVE ===== */}
+      {/* ===== HERO — CLEAN CORPORATE AESTHETIC ===== */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ background: "linear-gradient(180deg, #0B1C2D 0%, #071420 40%, #0d2240 70%, #0B1C2D 100%)" }}
+        className="relative min-h-screen flex items-center overflow-hidden bg-white"
       >
-        {/* 3D Landscape Background — parallax & drifting */}
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ y: heroImageY, scale: heroScale }}
-        >
-          <Image
-            src="/images/hero-landscape.png"
-            alt="Abstract 3D landscape"
-            fill
-            className="object-cover object-center animate-landscape-drift"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent" />
-        </motion.div>
+        {/* Subtle grid pattern background for corporate feel */}
+        < div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
-        {/* Floating gradient blobs — lively animated */}
-        <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-          {/* Large electric blue orb */}
+        {/* Soft gradient blobs — clean & brand aligned */}
+        < div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden mix-blend-multiply opacity-40" >
           <div
-            className="absolute top-[15%] right-[10%] w-[400px] h-[400px] rounded-full animate-float-slow opacity-30"
+            className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full animate-float-slow"
             style={{
-              background: "radial-gradient(circle, rgba(37, 99, 235, 0.5) 0%, rgba(37, 99, 235, 0) 70%)",
+              background: "radial-gradient(circle, rgba(79, 87, 223, 0.15) 0%, rgba(79, 87, 223, 0) 70%)",
             }}
           />
-          {/* Gold/amber orb */}
           <div
-            className="absolute top-[30%] left-[5%] w-[300px] h-[300px] rounded-full animate-float-medium opacity-25"
+            className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full animate-float-medium"
             style={{
-              background: "radial-gradient(circle, rgba(245, 180, 50, 0.4) 0%, rgba(245, 180, 50, 0) 70%)",
+              background: "radial-gradient(circle, rgba(253, 214, 59, 0.15) 0%, rgba(253, 214, 59, 0) 70%)",
               animationDelay: "2s",
             }}
           />
-          {/* Cyan small orb */}
-          <div
-            className="absolute bottom-[25%] right-[25%] w-[200px] h-[200px] rounded-full animate-float-fast opacity-20"
-            style={{
-              background: "radial-gradient(circle, rgba(34, 211, 238, 0.5) 0%, rgba(34, 211, 238, 0) 70%)",
-              animationDelay: "4s",
-            }}
-          />
-          {/* Purple accent orb */}
-          <div
-            className="absolute top-[60%] left-[40%] w-[250px] h-[250px] rounded-full animate-float-slow opacity-15"
-            style={{
-              background: "radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%)",
-              animationDelay: "6s",
-            }}
-          />
-
-          {/* Glass sphere effect — floating 3D blob */}
-          <motion.div
-            className="absolute top-[20%] right-[15%] w-[180px] h-[180px] lg:w-[260px] lg:h-[260px] rounded-full"
-            animate={{ y: [0, -30, 0], x: [0, 15, 0], rotate: [0, 10, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            style={{
-              background: "radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.3), rgba(34, 211, 238, 0.15), transparent 70%)",
-              boxShadow: "inset -20px -20px 40px rgba(0,0,0,0.2), inset 20px 20px 40px rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.08)",
-            }}
-          />
-
-          {/* Smaller glass sphere */}
-          <motion.div
-            className="absolute bottom-[35%] left-[8%] w-[100px] h-[100px] lg:w-[140px] lg:h-[140px] rounded-full"
-            animate={{ y: [0, 25, 0], x: [0, -10, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-            style={{
-              background: "radial-gradient(circle at 40% 30%, rgba(245, 180, 50, 0.25), rgba(251, 146, 60, 0.1), transparent 70%)",
-              boxShadow: "inset -10px -10px 20px rgba(0,0,0,0.15), inset 10px 10px 20px rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.06)",
-            }}
-          />
-
-          {/* Floating particles */}
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full bg-electric/40"
-              style={{
-                left: `${10 + i * 12}%`,
-                bottom: "0%",
-              }}
-              animate={{
-                y: [0, -800],
-                x: [0, Math.sin(i) * 50],
-                opacity: [0, 1, 1, 0],
-              }}
-              transition={{
-                duration: 8 + i * 2,
-                repeat: Infinity,
-                delay: i * 1.5,
-                ease: "linear",
-              }}
-            />
-          ))}
-        </div>
+        </div >
 
         {/* Hero content */}
-        <motion.div
-          style={{ opacity: heroOpacity }}
-          className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-32"
+        < motion.div
+          style={{ opacity: heroOpacity }
+          }
+          className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-32 mt-12"
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Text */}
             <div className="max-w-2xl">
               <FadeIn>
                 <motion.span
-                  className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-electric-light backdrop-blur-sm border border-white/10 mb-8"
-                  whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
+                  className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary border border-primary/20 mb-8"
+                  whileHover={{ scale: 1.05, backgroundColor: "rgba(79, 87, 223, 0.15)" }}
                 >
                   <motion.span
-                    className="h-2 w-2 rounded-full bg-electric"
+                    className="h-2 w-2 rounded-full bg-secondary"
                     animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
@@ -165,11 +89,11 @@ export default function HomePage() {
 
               <TextGenerateEffect
                 words="Marketing & Branding Strategies That Drive Real Growth"
-                className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
+                className="text-4xl font-extrabold leading-tight text-dark sm:text-5xl tracking-tight"
               />
 
               <FadeIn delay={0.8}>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90">
+                <p className="mt-8 max-w-xl text-xl leading-relaxed text-gray-700">
                   We help brands scale through strategic Email Marketing, SEO
                   optimisation, and high-performing Social Media management —
                   built to convert, not just look good.
@@ -177,7 +101,7 @@ export default function HomePage() {
               </FadeIn>
 
               <FadeIn delay={0.9}>
-                <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+                <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
                   {[
                     "Data-driven strategies",
                     "Conversion-focused execution",
@@ -186,9 +110,9 @@ export default function HomePage() {
                   ].map((signal) => (
                     <span
                       key={signal}
-                      className="inline-flex items-center gap-1.5 text-sm text-gray-300"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-dark"
                     >
-                      <CheckBadgeIcon className="h-4 w-4 text-electric" />
+                      <CheckBadgeIcon className="h-5 w-5 text-secondary" />
                       {signal}
                     </span>
                   ))}
@@ -207,97 +131,57 @@ export default function HomePage() {
               </FadeIn>
             </div>
 
-            {/* Floating dashboard + cinematic image */}
-            <FadeIn delay={0.5} className="hidden lg:block">
+            {/* Clean dashboard presentation */}
+            <FadeIn delay={0.5} className="hidden lg:block relative">
               <div className="relative">
-                {/* Main dashboard image */}
-                <motion.div
-                  className="relative rounded-2xl overflow-hidden shadow-2xl shadow-electric/10 ring-1 ring-white/10"
-                  whileHover={{ scale: 1.02, rotateY: 2 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Image
-                    src="/images/dashboard-analytics.png"
-                    alt="Marketing analytics dashboard"
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover"
+                {/* Main background image to replace dark floating blobs */}
+                <motion.div style={{ y: heroImageY }}>
+                  <BlobImage
+                    src="/images/hero_corporate.png"
+                    alt="M&B Strategy corporate meeting"
+                    delay={0.6}
                   />
-                  {/* Shimmer overlay */}
-                  <div className="absolute inset-0 overflow-hidden">
-                    <div
-                      className="absolute inset-0 animate-shimmer"
-                      style={{
-                        background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
-                      }}
-                    />
-                  </div>
                 </motion.div>
 
-                {/* Floating stat card - left bottom */}
+                {/* Floating UI Element overlays */}
                 <motion.div
-                  className="absolute -bottom-6 -left-6 z-20 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 px-5 py-4 shadow-xl"
-                  animate={{ y: [0, -8, 0] }}
+                  className="absolute -bottom-10 -left-10 z-20 rounded-2xl bg-white/90 backdrop-blur-xl border border-gray-100 p-2 shadow-2xl"
+                  animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-green-500/20 flex items-center justify-center">
-                      <ArrowUp className="h-5 w-5 text-green-400" />
-                    </div>
-                    <div>
-                      <div className="text-xs text-gray-400">Conversion Rate</div>
-                      <div className="text-xl font-bold text-white">+127%</div>
-                    </div>
-                  </div>
+                  <Image
+                    src="/images/dashboard_corporate.png"
+                    alt="Analytics Dashboard"
+                    width={250}
+                    height={180}
+                    className="rounded-xl shadow-sm border border-gray-50"
+                  />
                 </motion.div>
 
-                {/* Floating stat card - right top */}
+                {/* Clean stats floating card */}
                 <motion.div
-                  className="absolute -top-4 -right-4 z-20 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 px-5 py-3 shadow-xl"
+                  className="absolute -top-6 -right-6 z-20 rounded-2xl bg-white shadow-xl border border-gray-100 px-6 py-4"
                   animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 >
-                  <div className="flex items-center gap-2">
-                    <ChartBarIcon className="h-5 w-5 text-electric" />
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                      <ChartBarIcon className="h-6 w-6 text-secondary-dark" />
+                    </div>
                     <div>
-                      <div className="text-xs text-gray-400">Revenue Growth</div>
-                      <div className="text-lg font-bold text-white">3x ROI</div>
+                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Revenue</div>
+                      <div className="text-xl font-bold text-dark">+300% ROI</div>
                     </div>
                   </div>
                 </motion.div>
-
-                {/* Small floating blob behind image */}
-                <motion.div
-                  className="absolute -z-10 -top-10 -right-10 w-[200px] h-[200px] rounded-full"
-                  animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-                  transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                  style={{
-                    background: "radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%)",
-                  }}
-                />
               </div>
             </FadeIn>
           </div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5">
-            <motion.div
-              className="w-1.5 h-1.5 rounded-full bg-electric"
-              animate={{ y: [0, 16, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
-      </section>
+        </motion.div >
+      </section >
 
       {/* ===== TRUST MARQUEE ===== */}
-      <div className="bg-navy py-5 border-y border-white/5">
+      < div className="bg-primary py-4 border-y border-primary-light" >
         <InfiniteMarquee speed={20}>
           {[
             { icon: "✦", text: "Strategy-First Approach" },
@@ -311,17 +195,17 @@ export default function HomePage() {
           ].map((item) => (
             <span
               key={item.text}
-              className="flex-shrink-0 text-sm font-medium text-gray-400 whitespace-nowrap tracking-wider uppercase"
+              className="flex-shrink-0 text-sm font-bold text-white whitespace-nowrap tracking-wider uppercase"
             >
-              <span className="text-electric mr-2">{item.icon}</span>
+              <span className="text-secondary mr-2">{item.icon}</span>
               {item.text}
             </span>
           ))}
         </InfiniteMarquee>
-      </div>
+      </div >
 
       {/* ===== ABOUT SNAPSHOT ===== */}
-      <Section variant="white">
+      < Section variant="white" >
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <FadeIn>
             <SectionHeading
@@ -344,11 +228,9 @@ export default function HomePage() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <div className="relative group">
-              <FloatingImage
+              <BlobImage
                 src="/images/creative-workspace.png"
                 alt="Creative workspace at M&B Strategy"
-                width={600}
-                height={400}
               />
               {/* Overlapping stat cards */}
               <motion.div
@@ -359,11 +241,11 @@ export default function HomePage() {
                 transition={{ delay: 0.5, duration: 0.5 }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-xl bg-electric/10 flex items-center justify-center">
-                    <StarIcon className="h-6 w-6 text-electric" />
+                  <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <StarIcon className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-navy">150+</div>
+                    <div className="text-2xl font-bold text-dark">150+</div>
                     <div className="text-xs text-gray-500">Brands Trust Us</div>
                   </div>
                 </div>
@@ -380,7 +262,7 @@ export default function HomePage() {
                     <ChartBarIcon className="h-6 w-6 text-green-600" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-navy">98%</div>
+                    <div className="text-2xl font-bold text-dark">98%</div>
                     <div className="text-xs text-gray-500">Retention Rate</div>
                   </div>
                 </div>
@@ -388,10 +270,10 @@ export default function HomePage() {
             </div>
           </FadeIn>
         </div>
-      </Section>
+      </Section >
 
       {/* ===== SERVICES WITH IMAGES ===== */}
-      <section className="relative py-20 lg:py-28 overflow-hidden bg-soft-gray">
+      < section className="relative py-20 lg:py-28 overflow-hidden bg-soft-gray" >
         <AnimatedGridPattern />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
@@ -440,19 +322,19 @@ export default function HomePage() {
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-                      <div className="absolute bottom-4 left-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-electric text-white shadow-lg shadow-electric/30">
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent" />
+                      <div className="absolute bottom-4 left-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/30">
                         {service.icon}
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="mb-2 text-lg font-bold text-navy">
+                      <h3 className="mb-2 text-lg font-bold text-dark">
                         {service.title}
                       </h3>
                       <p className="text-sm leading-relaxed text-gray-500 mb-4">
                         {service.desc}
                       </p>
-                      <span className="inline-flex items-center text-sm font-semibold text-electric group-hover:gap-2 transition-all">
+                      <span className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 transition-all">
                         {service.linkText}
                         <svg
                           className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
@@ -475,39 +357,18 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
-      {/* ===== STATS — CINEMATIC PARALLAX BANNER ===== */}
-      <section className="relative py-28 overflow-hidden">
-        <motion.div
-          className="absolute inset-0"
-          initial={{ scale: 1.15 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 2, ease: "easeOut" }}
-        >
-          <Image
-            src="/images/hero-cinematic.png"
-            alt="M&B Strategy team"
-            fill
-            className="object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/75" />
-        </motion.div>
-
-        {/* Floating subtle blobs */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div
-            className="absolute top-[20%] right-[10%] w-[300px] h-[300px] rounded-full animate-float-slow opacity-10"
-            style={{ background: "radial-gradient(circle, rgba(37, 99, 235, 0.5) 0%, transparent 70%)" }}
-          />
-        </div>
+      {/* ===== STATS — CLEAN PRIMARY BLUE BANNER ===== */}
+      < section className="relative py-24 bg-primary overflow-hidden" >
+        {/* Subtle grid pattern background for corporate feel */}
+        < div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-20 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-14">
               <motion.div
-                className="mb-4 h-1 w-16 rounded-full bg-electric mx-auto"
+                className="mb-4 h-1 w-16 rounded-full bg-secondary mx-auto"
                 initial={{ width: 0 }}
                 whileInView={{ width: 64 }}
                 viewport={{ once: true }}
@@ -516,7 +377,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
                 Results That Speak
               </h2>
-              <p className="mt-4 text-lg text-gray-400 max-w-xl mx-auto">
+              <p className="mt-4 text-lg text-primary-light max-w-xl mx-auto">
                 We don&apos;t just promise growth — we deliver it with data.
               </p>
             </div>
@@ -528,12 +389,12 @@ export default function HomePage() {
             <StatsCounter value={5} suffix="M+" label="Emails Sent Monthly" light />
           </div>
         </div>
-      </section>
+      </section >
 
       {/* ===== 4-STEP PROCESS (IMPRESSION DIGITAL STYLE Edge-to-Edge Cards) ===== */}
-      <section className="relative w-full overflow-hidden py-24 bg-white">
+      < section className="relative w-full overflow-hidden py-24 bg-white" >
         <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-16 text-center">
-          <h2 className="text-3xl font-bold text-navy sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">
             Our Proven 4-Step Process
           </h2>
           <p className="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
@@ -546,7 +407,7 @@ export default function HomePage() {
               step: "01",
               title: "Discover & Audit",
               desc: "Deep dive into your brand, audience, competitors, and goals to find growth opportunities.",
-              color: "bg-teal-600 text-white", // Impression teal
+              color: "bg-primary text-white", // Brand Primary
               image: "/images/process-discover.png",
               category: "Analytics",
             },
@@ -554,7 +415,7 @@ export default function HomePage() {
               step: "02",
               title: "Strategic Roadmap",
               desc: "Build a tailored growth roadmap aligned with your business objectives and revenue targets.",
-              color: "bg-[#e20074] text-white", // Impression magenta
+              color: "bg-secondary text-dark", // Brand Secondary
               image: "/images/process-strategise.png",
               category: "Strategy",
             },
@@ -562,7 +423,7 @@ export default function HomePage() {
               step: "03",
               title: "Execute & Launch",
               desc: "Launch high-converting campaigns across Email, SEO, and Social channels with precision.",
-              color: "bg-gray-100 text-navy", // Impression light gray
+              color: "bg-gray-100 text-dark", // Light Gray
               image: "/images/process-execute.png",
               category: "Execution",
             },
@@ -570,7 +431,7 @@ export default function HomePage() {
               step: "04",
               title: "Measure & Optimise",
               desc: "Track ROI, test new angles, refine strategies, and scale what works for compounding growth.",
-              color: "bg-navy text-white", // Dark to balance out
+              color: "bg-dark text-white", // Dark Charcoal
               image: "/images/process-optimise.png",
               category: "Growth",
             },
@@ -593,9 +454,9 @@ export default function HomePage() {
                 />
                 {/* Gradient overlay to fade into card color */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[${step.color.includes("teal") ? "#0d9488" :
-                    step.color.includes("e20074") ? "#e20074" :
-                      step.color.includes("gray-100") ? "#f3f4f6" : "#0B1C2D"
+                  className={`absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[${step.color.includes("primary") ? "#4F57DF" :
+                    step.color.includes("secondary") ? "#FDD63B" :
+                      step.color.includes("gray-100") ? "#f3f4f6" : "#2B2D42"
                     }] opacity-90`}
                 />
               </div>
@@ -630,35 +491,11 @@ export default function HomePage() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </section >
 
-      {/* ===== CTA & CONTACT FORM — IMMERSIVE WITH BLOBS ===== */}
-      <section className="relative py-28 lg:py-40 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-blobs.png"
-            alt="Abstract gradient blobs"
-            fill
-            className="object-cover opacity-80 mix-blend-screen"
-          />
-          <div className="absolute inset-0 bg-navy/85" />
-        </div>
-
-        {/* Animated fluid blobs overlay for depth */}
-        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden mix-blend-screen">
-          <div
-            className="absolute top-[10%] left-[10%] w-[500px] h-[500px] rounded-full animate-float-slow opacity-25"
-            style={{ background: "radial-gradient(circle, rgba(37, 99, 235, 0.6) 0%, transparent 70%)" }}
-          />
-          <div
-            className="absolute bottom-[0%] right-[5%] w-[600px] h-[600px] rounded-full animate-float-medium opacity-20"
-            style={{ background: "radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, transparent 70%)" }}
-          />
-          <div
-            className="absolute top-[40%] right-[30%] w-[300px] h-[300px] rounded-full animate-float-fast opacity-25"
-            style={{ background: "radial-gradient(circle, rgba(34, 211, 238, 0.4) 0%, transparent 70%)" }}
-          />
-        </div>
+      {/* ===== CTA & CONTACT FORM — CLEAN CORPORATE ===== */}
+      < section className="relative py-28 lg:py-40 overflow-hidden bg-soft-gray border-t border-gray-200" >
+        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-30 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -670,101 +507,97 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="inline-block py-1.5 px-3 rounded-full bg-electric/10 border border-electric/20 text-electric-light text-sm font-semibold mb-6 tracking-wide uppercase">
+                <span className="inline-block py-1.5 px-3 rounded-full bg-secondary/20 border border-secondary/30 text-secondary-dark text-sm font-semibold mb-6 tracking-wide uppercase">
                   Let's Work Together
                 </span>
-                <h2 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl leading-tight mb-6">
+                <h2 className="text-4xl font-bold text-dark sm:text-5xl lg:text-6xl leading-tight mb-6">
                   Ready to Build a{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-light via-cyan-400 to-purple-500">
+                  <span className="text-primary block mt-2">
                     Growth Engine?
                   </span>
                 </h2>
-                <p className="text-lg text-gray-400 max-w-md mb-10 leading-relaxed">
+                <p className="text-lg text-gray-600 max-w-md mb-10 leading-relaxed">
                   Stop relying on guesswork. Partner with a strategy-led agency
                   to build a predictable, scalable marketing system that drives
                   real ROI.
                 </p>
                 <div className="space-y-6">
-                  <div className="flex items-center gap-4 text-gray-300">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                      <EnvelopeIcon className="w-5 h-5 text-electric-light" />
+                  <div className="flex items-center gap-4 text-gray-700">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-sm">
+                      <EnvelopeIcon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Email Us Directly</p>
-                      <p className="font-medium text-white">hello@marketingnbrandingstrategy.com</p>
+                      <p className="font-medium text-dark">hello@marketingnbrandingstrategy.com</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 text-gray-300">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-                      <ClockIcon className="w-5 h-5 text-electric-light" />
+                  <div className="flex items-center gap-4 text-gray-700">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-sm">
+                      <ClockIcon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Response Time</p>
-                      <p className="font-medium text-white">Within 24 Business Hours</p>
+                      <p className="font-medium text-dark">Within 24 Business Hours</p>
                     </div>
                   </div>
                 </div>
               </motion.div>
             </FadeIn>
 
-            {/* Glassmorphism Form */}
+            {/* Clean Corporate Form */}
             <FadeIn delay={0.2}>
               <motion.div
-                className="relative rounded-3xl overflow-hidden"
+                className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-200 bg-white"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                {/* Glass Backdrop */}
-                <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl border border-white/10" />
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50" />
-
                 {/* Form Content */}
                 <div className="relative p-8 sm:p-10">
-                  <h3 className="text-2xl font-bold text-white mb-8">
+                  <h3 className="text-2xl font-bold text-dark mb-8">
                     Book Your Free Strategy Call
                   </h3>
 
                   <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); alert("Form submitted!"); }}>
                     <div className="grid grid-cols-2 gap-5">
                       <div className="space-y-2">
-                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">First Name</label>
+                        <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">First Name</label>
                         <input
                           type="text"
                           required
-                          className="w-full bg-navy-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-colors"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-dark placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                           placeholder="John"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Last Name</label>
+                        <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Last Name</label>
                         <input
                           type="text"
                           required
-                          className="w-full bg-navy-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-colors"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-dark placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                           placeholder="Doe"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Work Email</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Work Email</label>
                       <input
                         type="email"
                         required
-                        className="w-full bg-navy-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-colors"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-dark placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                         placeholder="john@company.com"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">How can we help?</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">How can we help?</label>
                       <select
                         defaultValue=""
-                        className="w-full bg-navy-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-colors appearance-none"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none"
                       >
-                        <option value="" disabled className="text-gray-500">Select a service...</option>
+                        <option value="" disabled className="text-gray-400">Select a service...</option>
                         <option value="email">Email Marketing</option>
                         <option value="seo">SEO Optimisation</option>
                         <option value="social">Social Media Management</option>
@@ -773,17 +606,17 @@ export default function HomePage() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Message</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Message</label>
                       <textarea
                         rows={3}
-                        className="w-full bg-navy-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-colors resize-none"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-dark placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"
                         placeholder="Tell us about your brand and growth goals..."
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full mt-4 bg-electric hover:bg-electric-light text-white font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transform hover:-translate-y-1"
+                      className="w-full mt-4 bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl transition-all shadow-[0_4px_14px_0_rgba(79,87,223,0.39)] hover:shadow-[0_6px_20px_rgba(79,87,223,0.23)] transform hover:-translate-y-1"
                     >
                       Submit Request
                     </button>
@@ -793,7 +626,7 @@ export default function HomePage() {
             </FadeIn>
           </div>
         </div>
-      </section>
+      </section >
     </>
   );
 }

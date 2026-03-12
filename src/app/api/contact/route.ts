@@ -6,9 +6,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
-        const { firstName, lastName, email, company, service, message } = body;
+        const { name, email, company, budget, service, message } = body;
 
-        if (!firstName || !email || !message) {
+        if (!name || !email || !message) {
             return NextResponse.json(
                 { error: "Please fill in all required fields." },
                 { status: 400 }
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
             from: "M&B Strategy <onboarding@resend.dev>",
             to: process.env.CONTACT_EMAIL || "hello@marketingnbrandingstrategy.com",
             replyTo: email,
-            subject: `New Inquiry from ${firstName} ${lastName} — ${serviceName}`,
+            subject: `New Inquiry from ${name} — ${serviceName}`,
             html: `
                 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                     <div style="background: linear-gradient(135deg, #0a1628, #1e3a5f); border-radius: 16px; padding: 32px; margin-bottom: 24px;">
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
                         <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
                             <tr style="border-bottom: 1px solid #e2e8f0;">
                                 <td style="padding: 10px 0; color: #64748b; font-size: 14px; width: 140px;">Name</td>
-                                <td style="padding: 10px 0; color: #0a1628; font-size: 14px; font-weight: 600;">${firstName} ${lastName}</td>
+                                <td style="padding: 10px 0; color: #0a1628; font-size: 14px; font-weight: 600;">${name}</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #e2e8f0;">
                                 <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Email</td>
@@ -53,9 +53,13 @@ export async function POST(req: NextRequest) {
                                 <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Company</td>
                                 <td style="padding: 10px 0; color: #0a1628; font-size: 14px; font-weight: 600;">${company || "Not provided"}</td>
                             </tr>
-                            <tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
                                 <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Service</td>
                                 <td style="padding: 10px 0; color: #0a1628; font-size: 14px; font-weight: 600;">${serviceName}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px 0; color: #64748b; font-size: 14px;">Budget</td>
+                                <td style="padding: 10px 0; color: #0a1628; font-size: 14px; font-weight: 600;">${budget || "Not provided"}</td>
                             </tr>
                         </table>
                     </div>
@@ -76,16 +80,17 @@ export async function POST(req: NextRequest) {
         await resend.emails.send({
             from: "M&B Strategy <onboarding@resend.dev>",
             to: email,
+            replyTo: process.env.CONTACT_EMAIL || "hello@marketingnbrandingstrategy.com",
             subject: "We've received your inquiry — M&B Strategy",
             html: `
                 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
                     <div style="background: linear-gradient(135deg, #0a1628, #1e3a5f); border-radius: 16px; padding: 32px; margin-bottom: 24px; text-align: center;">
-                        <h1 style="color: #ffffff; margin: 0; font-size: 24px;">Thank You, ${firstName}!</h1>
+                        <h1 style="color: #ffffff; margin: 0; font-size: 24px;">Thank You, ${name}!</h1>
                         <p style="color: #94a3b8; margin: 12px 0 0; font-size: 15px;">We've received your inquiry and we're on it.</p>
                     </div>
 
                     <div style="padding: 0 8px;">
-                        <p style="color: #334155; font-size: 15px; line-height: 1.8;">Hi ${firstName},</p>
+                        <p style="color: #334155; font-size: 15px; line-height: 1.8;">Hi ${name},</p>
                         <p style="color: #334155; font-size: 15px; line-height: 1.8;">
                             Thanks for reaching out to M&B Strategy! We've received your message about <strong>${serviceName}</strong> and one of our strategists will review your inquiry within <strong>24 business hours</strong>.
                         </p>

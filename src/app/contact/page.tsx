@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
 import TextGenerateEffect from "@/components/TextGenerateEffect";
@@ -57,200 +58,171 @@ export default function ContactPage() {
 
   return (
     <div className="overflow-hidden">
-      {/* ====== CORPORATE HERO ====== */}
-      <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 overflow-hidden bg-white">
-        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/contact_hero_bg.png"
-            alt="Contact Us"
-            fill
-            className="object-cover opacity-10 scale-105 saturate-0"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/95" />
-        </div>
-
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden mix-blend-multiply opacity-20">
-          <div className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full" style={{ background: "radial-gradient(circle, rgba(79, 87, 223, 0.4) 0%, transparent 70%)" }} />
-          <div className="absolute bottom-[-5%] left-[10%] w-[500px] h-[500px] rounded-full" style={{ background: "radial-gradient(circle, rgba(253, 214, 59, 0.3) 0%, transparent 70%)" }} />
-        </div>
+      {/* ====== AGENCY HERO (DARK BLOCK) ====== */}
+      <section className="relative min-h-[50vh] flex items-center pt-32 pb-20 overflow-hidden bg-dark selection:bg-secondary selection:text-dark">
+        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-10 mix-blend-overlay" />
+        
+        {/* Massive Yellow Blob behind text */}
+        <motion.div
+           className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-secondary rounded-[40%_60%_70%_30%/40%_50%_60%_50%] opacity-20 blur-3xl mix-blend-screen pointer-events-none"
+           animate={{ rotate: [0, 90, 180, 270, 360], scale: [1, 1.2, 0.9, 1.1, 1] }}
+           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <FadeIn>
-            <span className="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
-              <EnvelopeIcon className="h-4 w-4" />
-              Get in Touch
+            <span className="inline-block py-2 px-4 rounded-none bg-white/10 text-white uppercase text-sm font-black mb-8 tracking-widest backdrop-blur-sm border border-white/20">
+              The Next Step
             </span>
           </FadeIn>
 
           <TextGenerateEffect
-            words="Let's Build Your Growth Strategy"
-            className="text-4xl font-bold text-dark sm:text-5xl lg:text-6xl leading-[1.1]"
+            words="Stop Guessing. Start Scaling."
+            className="text-5xl font-black text-white sm:text-7xl leading-[1.05] tracking-tighter"
           />
 
           <FadeIn delay={0.4}>
-            <p className="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed font-light">
-              Ready to scale your brand with confidence? Tell us about your goals and we&apos;ll map out the next steps.
+            <p className="mt-8 max-w-2xl mx-auto text-xl sm:text-2xl text-gray-400 leading-relaxed font-bold">
+              Ready to burn the playbook? Apply for a free 30-minute strategy audit where we map out your exact compounding growth system.
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* ====== FORM SECTION ====== */}
-      <section className="relative py-20 bg-soft-gray overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-40 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mt-32 -mr-32" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] -mb-32 -ml-32" />
+      {/* ====== FORM SECTION (PRIMARY BLUE BLOCK) ====== */}
+      <section className="relative py-24 lg:py-32 bg-primary overflow-hidden text-white selection:bg-secondary selection:text-dark">
+        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-10 mix-blend-overlay" />
+        
+        {/* Background Typography */}
+        <div className="absolute -bottom-10 left-[-10%] z-0 text-[15rem] lg:text-[20rem] font-black text-white/5 leading-none select-none tracking-tighter pointer-events-none">
+            INFILTRATE
+        </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-5">
+          <div className="grid gap-16 lg:grid-cols-5 items-start">
             {/* Form */}
             <div className="lg:col-span-3">
               <FadeIn>
                 {submitted ? (
-                  <div className="rounded-3xl bg-white border border-green-100 shadow-2xl shadow-gray-200/50 p-12 text-center">
-                    <div className="mx-auto mb-6 h-20 w-20 rounded-full bg-green-50 flex items-center justify-center ring-8 ring-green-100/50 shadow-[0_4px_14px_0_rgba(34,197,94,0.39)]">
-                      <CheckCircleIcon className="h-10 w-10 text-green-500" />
+                  <div className="rounded-none bg-dark border-4 border-secondary p-12 text-center shadow-2xl relative">
+                    <div className="mx-auto mb-6 h-24 w-24 rounded-none bg-secondary flex items-center justify-center text-dark shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]">
+                      <CheckCircleIcon className="h-12 w-12" />
                     </div>
-                    <h3 className="text-3xl font-bold text-dark">Thank You!</h3>
-                    <p className="mt-4 text-lg text-gray-500 max-w-md mx-auto leading-relaxed">
-                      We&apos;ve received your message and sent a confirmation to your email. Our team will get back to you within <strong className="text-dark">24 business hours</strong>.
+                    <h3 className="text-4xl font-black text-white tracking-tight">Signal Received.</h3>
+                    <p className="mt-6 text-xl text-gray-400 max-w-md mx-auto leading-relaxed">
+                      We've dispatched a confirmation. A senior strategist will review your application and respond within <strong className="text-secondary font-black">24 hours</strong>.
                     </p>
                     <Button
                       href="/"
-                      variant="outline"
-                      className="mt-8 border-gray-200 text-dark hover:border-primary hover:text-white hover:bg-primary"
+                      variant="primary"
+                      className="mt-10 bg-white text-dark hover:bg-secondary hover:text-dark px-8 py-4 text-lg font-black"
                     >
-                      Back to Home
+                      Return to Base
                     </Button>
                   </div>
                 ) : (
-                  <div className="rounded-3xl bg-white shadow-xl shadow-gray-200/50 border border-gray-100 p-8 sm:p-10">
-                    <div className="mb-8">
-                      <div className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-primary/5 border border-primary/10 mb-4">
-                        <PaperAirplaneIcon className="h-3.5 w-3.5 text-primary" />
-                        <span className="text-xs font-semibold text-primary uppercase tracking-wider">Free Consultation</span>
-                      </div>
-                      <h2 className="text-2xl font-bold text-dark">Send Us a Message</h2>
-                      <p className="text-sm text-gray-500 mt-1">Fields marked with * are required</p>
+                  <div className="rounded-none bg-white p-8 sm:p-12 shadow-[12px_12px_0px_0px_rgba(40,39,57,1)] relative">
+                    <div className="absolute top-0 right-0 w-8 h-8 bg-secondary" />
+                    <div className="absolute bottom-0 left-0 w-8 h-8 bg-primary" />
+                    
+                    <div className="mb-10 border-l-8 border-secondary pl-6">
+                      <h2 className="text-3xl sm:text-4xl font-black text-dark tracking-tighter leading-none">Apply For <span className="text-primary italic">Partnership.</span></h2>
+                      <p className="text-base text-gray-500 font-bold mt-4">We respect your time. Be ruthless with the details. * Fields required.</p>
                     </div>
 
                     {error && (
-                      <div className="mb-6 flex items-center gap-3 p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm">
-                        <ExclamationCircleIcon className="h-5 w-5 flex-shrink-0" />
+                      <div className="mb-8 flex items-center gap-4 p-5 rounded-none bg-dark border-b-4 border-red-500 text-white text-sm font-bold shadow-lg">
+                        <ExclamationCircleIcon className="h-6 w-6 text-red-500 flex-shrink-0" />
                         {error}
                       </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-semibold text-dark mb-2">
-                          Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          required
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-dark placeholder-gray-400 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white"
-                          placeholder="John Doe"
-                        />
+                    <form onSubmit={handleSubmit} className="space-y-6 text-left">
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div>
+                          <label htmlFor="firstName" className="block text-sm font-black text-dark tracking-wide uppercase mb-2">First Name *</label>
+                          <input
+                            type="text" id="firstName" name="firstName" required
+                            className="w-full rounded-none border-2 border-gray-200 bg-gray-50 px-5 py-4 text-dark font-medium placeholder-gray-400 outline-none transition-all focus:border-dark focus:bg-white focus:ring-0"
+                            placeholder="John"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="lastName" className="block text-sm font-black text-dark tracking-wide uppercase mb-2">Last Name *</label>
+                          <input
+                            type="text" id="lastName" name="lastName" required
+                            className="w-full rounded-none border-2 border-gray-200 bg-gray-50 px-5 py-4 text-dark font-medium placeholder-gray-400 outline-none transition-all focus:border-dark focus:bg-white focus:ring-0"
+                            placeholder="Doe"
+                          />
+                        </div>
                       </div>
 
                       <div>
-                        <label htmlFor="email" className="block text-sm font-semibold text-dark mb-2">
-                          Work Email *
-                        </label>
+                        <label htmlFor="email" className="block text-sm font-black text-dark tracking-wide uppercase mb-2">Work Email *</label>
                         <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          required
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-dark placeholder-gray-400 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white"
+                          type="email" id="email" name="email" required
+                          className="w-full rounded-none border-2 border-gray-200 bg-gray-50 px-5 py-4 text-dark font-medium placeholder-gray-400 outline-none transition-all focus:border-dark focus:bg-white focus:ring-0"
                           placeholder="john@company.com"
                         />
                       </div>
 
-                      <div>
-                        <label htmlFor="company" className="block text-sm font-semibold text-dark mb-2">
-                          Company / Brand Name
-                        </label>
-                        <input
-                          type="text"
-                          id="company"
-                          name="company"
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-dark placeholder-gray-400 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white"
-                          placeholder="Acme Inc."
-                        />
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div>
+                          <label htmlFor="company" className="block text-sm font-black text-dark tracking-wide uppercase mb-2">Company Name</label>
+                          <input
+                            type="text" id="company" name="company"
+                            className="w-full rounded-none border-2 border-gray-200 bg-gray-50 px-5 py-4 text-dark font-medium placeholder-gray-400 outline-none transition-all focus:border-dark focus:bg-white focus:ring-0"
+                            placeholder="Acme Inc."
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="service" className="block text-sm font-black text-dark tracking-wide uppercase mb-2">Primary Objective</label>
+                          <div className="relative">
+                            <select
+                              id="service" name="service"
+                              className="w-full rounded-none border-2 border-gray-200 bg-gray-50 px-5 py-4 text-dark font-medium outline-none transition-all focus:border-dark focus:bg-white appearance-none cursor-pointer"
+                            >
+                              <option value="">Select a mission...</option>
+                              <option value="email">Dominate Inbox (Email)</option>
+                              <option value="seo">Command Search (SEO)</option>
+                              <option value="social">Hijack Attention (Social)</option>
+                              <option value="multiple">Full System Redesign</option>
+                              <option value="not-sure">Not Sure Yet</option>
+                            </select>
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                              <svg className="h-5 w-5 text-dark" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       <div>
-                        <label htmlFor="budget" className="block text-sm font-semibold text-dark mb-2">
-                          Estimated Budget
-                        </label>
-                        <select
-                          id="budget"
-                          name="budget"
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-dark outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white appearance-none cursor-pointer"
-                        >
-                          <option value="">Select a budget range</option>
-                          <option value="under-1k">Under £1,000 / mo</option>
-                          <option value="1k-3k">£1,000 - £3,000 / mo</option>
-                          <option value="3k-5k">£3,000 - £5,000 / mo</option>
-                          <option value="5k-plus">£5,000+ / mo</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label htmlFor="service" className="block text-sm font-semibold text-dark mb-2">
-                          Service Interested In
-                        </label>
-                        <select
-                          id="service"
-                          name="service"
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-dark outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white appearance-none cursor-pointer"
-                        >
-                          <option value="">Select a service</option>
-                          <option value="email">Email Marketing</option>
-                          <option value="seo">SEO Optimisation</option>
-                          <option value="social">Social Media Creatives & Management</option>
-                          <option value="multiple">Multiple Services</option>
-                          <option value="not-sure">Not Sure Yet</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label htmlFor="message" className="block text-sm font-semibold text-dark mb-2">
-                          Tell Us About Your Goals *
-                        </label>
+                        <label htmlFor="message" className="block text-sm font-black text-dark tracking-wide uppercase mb-2">Current Reality vs. Target Reality *</label>
                         <textarea
-                          id="message"
-                          name="message"
-                          rows={5}
-                          required
-                          className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-dark placeholder-gray-400 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white resize-none"
-                          placeholder="Tell us about your brand, current challenges, and what you're looking to achieve..."
+                          id="message" name="message" rows={5} required
+                          className="w-full rounded-none border-2 border-gray-200 bg-gray-50 px-5 py-4 text-dark font-medium placeholder-gray-400 outline-none transition-all focus:border-dark focus:bg-white resize-none"
+                          placeholder="Where are you now? Where do you want to be? What's stopping you?"
                         />
                       </div>
 
                       <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-white shadow-[0_4px_14px_0_rgba(79,87,223,0.39)] transition-all hover:bg-primary-dark hover:shadow-[0_6px_20px_rgba(79,87,223,0.23)] hover:-translate-y-1 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:-translate-y-0"
+                        type="submit" disabled={loading}
+                        className="w-full inline-flex items-center justify-center gap-3 rounded-none bg-dark px-8 py-5 text-lg font-black tracking-widest uppercase text-white transition-all hover:bg-black hover:text-secondary disabled:opacity-60 disabled:cursor-not-allowed shadow-[6px_6px_0px_0px_rgba(253,214,59,1)] hover:translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_rgba(253,214,59,1)]"
                       >
                         {loading ? (
                           <>
-                            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                             </svg>
-                            Sending...
+                            Transmitting...
                           </>
                         ) : (
                           <>
-                            <PaperAirplaneIcon className="h-4 w-4" />
-                            Book Your Free Strategy Call
+                            <PaperAirplaneIcon className="h-5 w-5" />
+                            Submit Application
                           </>
                         )}
                       </button>
@@ -263,68 +235,36 @@ export default function ContactPage() {
             {/* Contact Info Sidebar */}
             <div className="lg:col-span-2">
               <FadeIn delay={0.2}>
-                <div className="sticky top-32 space-y-6">
-                  {/* Get in Touch Card */}
-                  <div className="rounded-3xl bg-white shadow-xl shadow-gray-200/50 border border-gray-100 p-8 space-y-6">
-                    <h3 className="text-xl font-bold text-dark">Get in Touch</h3>
-                    <ul className="space-y-5">
+                <div className="sticky top-32 space-y-8 text-left">
+                  {/* Intel Card */}
+                  <div className="rounded-none bg-dark border border-white/10 p-8 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-secondary opacity-10 rounded-full blur-2xl" />
+                    <h3 className="text-3xl font-black text-white mb-8 tracking-tighter">Direct Intel.</h3>
+                    <ul className="space-y-6">
                       {[
-                        {
-                          icon: <EnvelopeIcon className="h-5 w-5" />,
-                          label: "Email",
-                          value: "hello@marketingnbrandingstrategy.com",
-                          color: "bg-primary/10 text-primary",
-                        },
-                        {
-                          icon: <PhoneIcon className="h-5 w-5" />,
-                          label: "Phone",
-                          value: "+1 (555) 000-0000",
-                          color: "bg-secondary/20 text-secondary-dark",
-                        },
-                        {
-                          icon: <MapPinIcon className="h-5 w-5" />,
-                          label: "Location",
-                          value: "Global · Remote-first Agency",
-                          color: "bg-blue-500/10 text-blue-600",
-                        },
-                        {
-                          icon: <ClockIcon className="h-5 w-5" />,
-                          label: "Response Time",
-                          value: "Within 24 business hours",
-                          color: "bg-purple-500/10 text-purple-600",
-                        },
+                        { icon: <EnvelopeIcon className="h-6 w-6" />, label: "Email", value: "hello@marketingnbrandingstrategy.com" },
+                        { icon: <ClockIcon className="h-6 w-6" />, label: "Response", value: "T+24 Hours" },
+                        { icon: <MapPinIcon className="h-6 w-6" />, label: "HQ", value: "Global / Remote" },
                       ].map((item) => (
-                        <li key={item.label} className="flex items-start gap-4 group">
-                          <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl ${item.color} group-hover:scale-110 transition-transform`}>
+                        <li key={item.label} className="flex items-center gap-5 group">
+                          <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-none bg-white/5 text-secondary group-hover:bg-secondary group-hover:text-dark transition-colors border border-white/10 group-hover:border-secondary">
                             {item.icon}
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-dark">{item.label}</p>
-                            <p className="text-sm text-gray-500 break-all">{item.value}</p>
+                            <p className="text-sm font-black tracking-widest text-primary-light uppercase">{item.label}</p>
+                            <p className="text-base text-white font-medium break-all">{item.value}</p>
                           </div>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Quick Call Card — Corporate gradient */}
-                  <div className="rounded-3xl p-8 text-white relative overflow-hidden bg-primary shadow-xl">
-                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/30 rounded-full blur-3xl -mr-10 -mt-10" />
-                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full blur-3xl -ml-8 -mb-8" />
-                    <div className="relative z-10">
-                      <h3 className="text-xl font-bold mb-3">Prefer a quick call?</h3>
-                      <p className="text-sm text-white/80 mb-6 leading-relaxed">
-                        Book a free 15-minute strategy call to discuss your needs face-to-face.
-                      </p>
-                      <Button
-                        href="/contact"
-                        variant="outline"
-                        className="w-full border-white/20 text-white hover:bg-white hover:text-primary shadow-lg hover:-translate-y-1"
-                      >
-                        Book a Call
-                      </Button>
-                    </div>
+                  {/* Warning Box */}
+                  <div className="rounded-none bg-secondary p-8 text-dark relative shadow-[8px_8px_0px_0px_rgba(40,39,57,1)]">
+                    <h3 className="text-2xl font-black mb-4 uppercase tracking-tight">Warning: High Volume</h3>
+                    <p className="text-base font-bold leading-relaxed">
+                      Due to the intensive nature of our campaigns, we only onboard 3 new partners per quarter. Ensure your application is detailed to secure priority review.
+                    </p>
                   </div>
                 </div>
               </FadeIn>

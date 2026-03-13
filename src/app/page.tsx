@@ -64,120 +64,122 @@ export default function HomePage() {
           />
         </div >
 
-        {/* Hero content */}
-        < motion.div
-          style={{ opacity: heroOpacity }
-          }
-          className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-32 mt-12"
-        >
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Text */}
-            <div className="max-w-2xl">
-              <FadeIn>
-                <motion.span
-                  className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary border border-primary/20 mb-8"
-                  whileHover={{ scale: 1.05, backgroundColor: "rgba(79, 87, 223, 0.15)" }}
-                >
-                  <motion.span
-                    className="h-2 w-2 rounded-full bg-secondary"
-                    animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  Strategy-Led Growth Agency
-                </motion.span>
-              </FadeIn>
+        {/* ====== CREATIVE AGENCY HERO ====== */}
+        <section className="relative min-h-[95vh] flex items-center pt-32 pb-20 overflow-hidden bg-primary selection:bg-secondary selection:text-dark">
+          {/* Massive Abstract Yellow Blob Background */}
+          <motion.div
+            className="absolute -top-[20%] right-[5%] w-[800px] h-[800px] bg-secondary rounded-[40%_60%_70%_30%/40%_50%_60%_50%] opacity-90 blur-3xl mix-blend-overlay"
+            animate={{
+              rotate: [0, 90, 180, 270, 360],
+              scale: [1, 1.1, 0.9, 1.05, 1],
+              borderRadius: [
+                "40% 60% 70% 30% / 40% 50% 60% 50%",
+                "60% 40% 30% 70% / 50% 60% 40% 50%",
+                "30% 70% 50% 50% / 60% 40% 50% 60%",
+                "40% 60% 70% 30% / 40% 50% 60% 50%"
+              ]
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div
+            className="absolute bottom-[10%] -left-[10%] w-[500px] h-[500px] bg-accent rounded-[60%_40%_30%_70%/50%_60%_40%_50%] opacity-80 blur-2xl mix-blend-multiply"
+            animate={{
+              rotate: [360, 270, 180, 90, 0],
+              scale: [1, 1.2, 0.8, 1.1, 1],
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          />
 
-              <TextGenerateEffect
-                words="Marketing & Branding Strategies That Drive Real Growth"
-                className="text-4xl font-extrabold leading-tight text-dark sm:text-5xl tracking-tight"
-              />
+          <motion.div
+            style={{ opacity: heroOpacity }}
+            className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-20 mt-12 w-full"
+          >
+            <div className="grid lg:grid-cols-12 gap-12 items-center">
+              {/* Text Content - overlapping 7 columns */}
+              <div className="lg:col-span-7 relative z-20">
+                <FadeIn>
+                  <motion.div
+                    className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-2 text-sm font-bold text-secondary border border-secondary/30 backdrop-blur-md shadow-[0_0_20px_rgba(253,214,59,0.2)] mb-8"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+                  >
+                    <motion.div
+                      className="h-2.5 w-2.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(253,214,59,0.8)]"
+                      animate={{ scale: [1, 1.5, 1], opacity: [1, 0.7, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <span className="tracking-wide uppercase">Award-Winning Strategy</span>
+                  </motion.div>
+                </FadeIn>
 
-              <FadeIn delay={0.8}>
-                <p className="mt-8 max-w-xl text-xl leading-relaxed text-gray-700">
-                  We help brands scale through strategic Email Marketing, SEO
-                  optimisation, and high-performing Social Media management —
-                  built to convert, not just look good.
-                </p>
-              </FadeIn>
+                <TextGenerateEffect
+                  words="Leave Average Behind. We Engineer Growth."
+                  className="text-4xl font-extrabold text-white sm:text-5xl tracking-tighter drop-shadow-md"
+                />
 
-              <FadeIn delay={0.9}>
-                <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-                  {[
-                    "Data-driven strategies",
-                    "Conversion-focused execution",
-                    "Transparent reporting",
-                    "Long-term growth mindset",
-                  ].map((signal) => (
-                    <span
-                      key={signal}
-                      className="inline-flex items-center gap-2 text-sm font-medium text-dark"
-                    >
-                      <CheckBadgeIcon className="h-5 w-5 text-secondary" />
-                      {signal}
-                    </span>
-                  ))}
-                </div>
-              </FadeIn>
+                <FadeIn delay={0.4}>
+                  <p className="mt-8 max-w-xl text-xl leading-relaxed text-blue-100 font-medium">
+                    Stop blending in. We build aggressive, data-backed Marketing, SEO, and Social Strategies that command attention and drive relentless revenue.
+                  </p>
+                </FadeIn>
 
-              <FadeIn delay={1}>
-                <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                  <Button href="/contact" variant="primary">
-                    Get a Free Strategy Call
-                  </Button>
-                  <Button href="/services" variant="outline">
-                    View Our Services
-                  </Button>
-                </div>
-              </FadeIn>
-            </div>
-
-            {/* Clean dashboard presentation */}
-            <FadeIn delay={0.5} className="hidden lg:block relative">
-              <div className="relative">
-                {/* Main background image to replace dark floating blobs */}
-                <motion.div style={{ y: heroImageY }}>
-                  <BlobImage
-                    src="/images/hero_corporate.png"
-                    alt="M&B Strategy corporate meeting"
-                    delay={0.6}
-                  />
-                </motion.div>
-
-                {/* Floating UI Element overlays */}
-                <motion.div
-                  className="absolute -bottom-10 -left-10 z-20 rounded-2xl bg-white/90 backdrop-blur-xl border border-gray-100 p-2 shadow-2xl"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Image
-                    src="/images/dashboard_corporate.png"
-                    alt="Analytics Dashboard"
-                    width={250}
-                    height={180}
-                    className="rounded-xl shadow-sm border border-gray-50"
-                  />
-                </motion.div>
-
-                {/* Clean stats floating card */}
-                <motion.div
-                  className="absolute -top-6 -right-6 z-20 rounded-2xl bg-white shadow-xl border border-gray-100 px-6 py-4"
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-secondary/20 flex items-center justify-center">
-                      <ChartBarIcon className="h-6 w-6 text-secondary-dark" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Revenue</div>
-                      <div className="text-xl font-bold text-dark">+300% ROI</div>
-                    </div>
+                <FadeIn delay={0.6}>
+                  <div className="mt-10 flex flex-col sm:flex-row gap-5">
+                    <Button href="/contact" variant="accent" className="px-8 py-4 text-lg">
+                      Start Your Growth Engine
+                    </Button>
+                    <Button href="/services" variant="outline" className="px-8 py-4 text-lg border-white text-white hover:bg-white/10">
+                      Explore Our Work
+                    </Button>
                   </div>
-                </motion.div>
+                </FadeIn>
               </div>
-            </FadeIn>
-          </div>
-        </motion.div >
+
+              {/* Asymmetrical Image Element - breaking out of its container */}
+              <div className="lg:col-span-5 relative mt-16 lg:mt-0 z-10 w-full flex justify-end">
+                <FadeIn delay={0.5} className="relative w-[120%] -right-[15%] lg:-right-[30%]">
+                  <motion.div style={{ y: heroImageY }} className="relative">
+                    {/* The massive foreground blob image */}
+                    <div className="relative z-20 transform -rotate-3 hover:rotate-0 transition-transform duration-700 ease-out drop-shadow-2xl">
+                      <BlobImage
+                        src="/images/hero_corporate.png"
+                        alt="Creative Agency Strategy Session"
+                        delay={0.6}
+                      />
+                    </div>
+                    
+                    {/* Floating overlapping elements to break the grid */}
+                    <motion.div
+                      className="absolute -bottom-16 -left-24 z-30 rounded-[2rem] bg-dark p-6 shadow-2xl border border-white/10 w-72"
+                      animate={{ y: [0, -15, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="h-12 w-12 rounded-full bg-primary flex items-center justify-center">
+                          <RocketLaunchIcon className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-white font-bold text-lg">600% ROI</p>
+                          <p className="text-gray-400 text-xs text-secondary font-medium">Average Client Growth</p>
+                        </div>
+                      </div>
+                      <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
+                        <motion.div 
+                          className="h-full bg-secondary" 
+                          initial={{ width: 0 }}
+                          animate={{ width: "85%" }}
+                          transition={{ delay: 1, duration: 1.5, ease: "easeOut" }}
+                        />
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </FadeIn>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Diagonal slash background break */}
+          <div className="absolute -bottom-[20%] left-0 w-[150%] h-32 bg-white transform -rotate-2 z-0 origin-left" />
+        </section>
       </section >
 
       {/* ===== TRUST MARQUEE ===== */}
@@ -204,106 +206,119 @@ export default function HomePage() {
         </InfiniteMarquee>
       </div >
 
-      {/* ===== ABOUT SNAPSHOT ===== */}
-      < Section variant="white" >
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          <FadeIn>
-            <SectionHeading
-              title="Why Brands Choose M&B Strategy"
-              centered={false}
-            />
-            <p className="text-gray-500 leading-relaxed">
-              At M&B Strategy, we believe marketing should be intentional,
-              measurable, and scalable. Every strategy we build is rooted in
-              audience insights, brand positioning, and performance data — no
-              guesswork, no generic tactics.
-            </p>
-            <p className="mt-4 text-gray-500 leading-relaxed">
-              We partner with brands that value clarity, consistency, and
-              compounding growth — not short-term hacks.
-            </p>
-            <div className="mt-8">
-              <Button href="/about">Learn More About Us</Button>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <div className="relative group">
-              <BlobImage
-                src="/images/creative-workspace.png"
-                alt="Creative workspace at M&B Strategy"
-              />
-              {/* Overlapping stat cards */}
-              <motion.div
-                className="absolute -bottom-6 -left-4 z-20 rounded-2xl bg-white shadow-xl border border-gray-100 p-5"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <StarIcon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-dark">150+</div>
-                    <div className="text-xs text-gray-500">Brands Trust Us</div>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-                className="absolute -top-4 -right-4 z-20 rounded-2xl bg-white shadow-xl border border-gray-100 p-5"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-xl bg-green-50 flex items-center justify-center">
-                    <ChartBarIcon className="h-6 w-6 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-dark">98%</div>
-                    <div className="text-xs text-gray-500">Retention Rate</div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </FadeIn>
+      {/* ===== ABOUT SNAPSHOT (YELLOW COLOR BLOCK) ===== */}
+      <section className="relative py-24 lg:py-32 bg-secondary overflow-hidden selection:bg-dark selection:text-white">
+        {/* Subtle texture over the yellow */}
+        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] opacity-10 mix-blend-multiply" />
+        
+        {/* Large abstract typography in background */}
+        <div className="absolute -top-10 -left-10 z-0 text-[15rem] font-black text-black/5 leading-none select-none tracking-tighter">
+          GROW.
         </div>
-      </Section >
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid items-center gap-16 lg:grid-cols-2">
+            <FadeIn>
+              <h2 className="text-4xl font-black text-dark sm:text-5xl tracking-tight mb-8">
+                Evidence into Action.
+              </h2>
+              <div className="w-20 h-2 bg-dark mb-8" />
+              <p className="text-dark/80 text-xl font-medium leading-relaxed">
+                Marketing isn't magic. It's mathematics, psychology, and relentless iteration. 
+                We engineer scalable strategies rooted in hard data, audience behavior, and 
+                brand positioning to unlock compounding revenue.
+              </p>
+              <p className="mt-6 text-dark/80 text-lg leading-relaxed">
+                We partner exclusively with ambitious brand owners who demand undeniable ROI, 
+                crystal-clear reporting, and a team that refuses to settle for "good enough."
+              </p>
+              <div className="mt-10">
+                <Button href="/about" variant="primary" className="bg-dark text-white hover:bg-black px-8 py-4">
+                  Discover Our Methodology
+                </Button>
+              </div>
+            </FadeIn>
+            
+            <FadeIn delay={0.2} className="relative">
+              <div className="relative group z-10">
+                {/* Image offset and framed heavily */}
+                <div className="relative transform rotate-2 hover:rotate-0 transition-all duration-500 shadow-2xl border-8 border-dark">
+                  <BlobImage
+                    src="/images/creative-workspace.png"
+                    alt="M&B Strategy analyzing data"
+                  />
+                  <div className="absolute inset-0 bg-primary mix-blend-color opacity-20 group-hover:opacity-0 transition-opacity duration-500"/>
+                </div>
+                
+                {/* Aggressive overlapping stat blocks */}
+                <motion.div
+                  className="absolute -bottom-10 -left-10 z-20 rounded-none bg-dark border-b-4 border-primary p-6 shadow-2xl"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="text-4xl font-black text-white">150+</div>
+                  <div className="text-sm font-bold text-secondary uppercase tracking-widest mt-1">Growth Partners</div>
+                </motion.div>
+
+                <motion.div
+                  className="absolute -top-10 -right-10 z-20 rounded-none bg-white border-t-4 border-secondary p-6 shadow-2xl"
+                  initial={{ opacity: 0, y: -30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <div className="text-4xl font-black text-dark">98%</div>
+                  <div className="text-sm font-bold text-primary uppercase tracking-widest mt-1">Client Retention</div>
+                </motion.div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
 
       {/* ===== SERVICES WITH IMAGES ===== */}
-      < section className="relative py-20 lg:py-28 overflow-hidden bg-soft-gray" >
+      <section className="relative py-24 lg:py-32 overflow-hidden bg-white">
         <AnimatedGridPattern />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            title="Our Core Growth Services"
-            subtitle="We focus on three essential growth pillars that every modern brand needs to scale sustainably."
-          />
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl font-black text-dark sm:text-5xl tracking-tight mb-6">
+                Dominate Your <span className="text-primary italic">Market.</span>
+              </h2>
+              <p className="text-xl text-gray-600 font-medium">
+                We focus on three essential growth pillars that ambitious brands need to scale sustainably. No fluff. Just ROI.
+              </p>
+            </div>
+            <Button href="/services" variant="outline" className="shrink-0 font-bold border-2">
+              View All Capabilities
+            </Button>
+          </div>
+
+          <div className="grid gap-10 md:grid-cols-3">
             {[
               {
                 icon: <EnvelopeIcon className="h-6 w-6" />,
                 title: "Email Marketing That Converts",
-                desc: "Build relationships, nurture leads, and drive repeat revenue with strategic email campaigns.",
+                desc: "Turn your list into a revenue engine. Strategic flows and campaigns that drive repeat purchases and extreme loyalty.",
                 href: "/services/email-marketing",
-                linkText: "Explore Email Marketing",
+                linkText: "Scale Your Email",
                 image: "/images/service-email.png",
               },
               {
                 icon: <MagnifyingGlassIcon className="h-6 w-6" />,
-                title: "SEO Built for Long-Term Growth",
-                desc: "Rank higher, attract qualified traffic, and convert organic visitors into customers.",
+                title: "SEO Built for Dominance",
+                desc: "Stop renting traffic. We build compounding organic visibility that positions you as the undisputed authority.",
                 href: "/services/seo-optimisation",
-                linkText: "Explore SEO Services",
+                linkText: "Capture Search",
                 image: "/images/service-seo.png",
               },
               {
                 icon: <MegaphoneIcon className="h-6 w-6" />,
-                title: "Social Media That Builds Brands",
-                desc: "Scroll-stopping creatives and consistent management designed to grow awareness, engagement, and trust.",
+                title: "Social That commands Attention",
+                desc: "Creative that stops the scroll. We build omnipresent social strategies that turn strangers into brand advocates.",
                 href: "/services/social-media",
-                linkText: "Explore Social Media Services",
+                linkText: "Command Social",
                 image: "/images/service-social.png",
               },
             ].map((service, i) => (
@@ -312,32 +327,32 @@ export default function HomePage() {
                   <motion.a
                     href={service.href}
                     className="group block"
-                    whileHover={{ y: -6 }}
+                    whileHover={{ y: -10 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="relative h-52 overflow-hidden rounded-t-2xl">
+                    <div className="relative h-64 overflow-hidden rounded-t-[2rem]">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent" />
-                      <div className="absolute bottom-4 left-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/30">
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent" />
+                      <div className="absolute bottom-6 left-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-dark shadow-xl shadow-secondary/30 transform transition-transform group-hover:rotate-12 group-hover:scale-110">
                         {service.icon}
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="mb-2 text-lg font-bold text-dark">
+                    <div className="p-8 bg-gray-50 border-t-4 border-transparent group-hover:border-primary transition-colors">
+                      <h3 className="mb-3 text-2xl font-black text-dark tracking-tight">
                         {service.title}
                       </h3>
-                      <p className="text-sm leading-relaxed text-gray-500 mb-4">
+                      <p className="text-base font-medium leading-relaxed text-gray-500 mb-6">
                         {service.desc}
                       </p>
-                      <span className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 transition-all">
+                      <span className="inline-flex items-center text-sm font-bold text-primary group-hover:gap-3 transition-all uppercase tracking-wider">
                         {service.linkText}
                         <svg
-                          className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                          className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-2"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -345,7 +360,7 @@ export default function HomePage() {
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            strokeWidth={2}
+                            strokeWidth={2.5}
                             d="M9 5l7 7-7 7"
                           />
                         </svg>
@@ -357,135 +372,116 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section >
+      </section>
 
       {/* ===== STATS — CLEAN PRIMARY BLUE BANNER ===== */}
-      < section className="relative py-24 bg-primary overflow-hidden" >
-        {/* Subtle grid pattern background for corporate feel */}
-        < div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-20 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      {/* ===== STATS — CLEAN PRIMARY BLUE BANNER ===== */}
+      <section className="relative py-24 lg:py-32 bg-primary overflow-hidden selection:bg-white selection:text-primary">
+        {/* Subtle geometric pattern */}
+        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-20 mix-blend-overlay" />
+        
+        {/* Massive background text */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 text-[12rem] lg:text-[20rem] font-black text-white/5 leading-none select-none tracking-tighter whitespace-nowrap">
+          RESULTS.
+        </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
-            <div className="text-center mb-14">
-              <motion.div
-                className="mb-4 h-1 w-16 rounded-full bg-secondary mx-auto"
-                initial={{ width: 0 }}
-                whileInView={{ width: 64 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              />
-              <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-                Results That Speak
-              </h2>
-              <p className="mt-4 text-lg text-primary-light max-w-xl mx-auto">
-                We don&apos;t just promise growth — we deliver it with data.
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 border-b-2 border-white/20 pb-12">
+              <div className="max-w-2xl">
+                <h2 className="text-4xl font-black text-white sm:text-6xl tracking-tighter">
+                  Data Doesn't Lie.
+                </h2>
+              </div>
+              <p className="text-xl text-primary-light font-medium max-w-md text-right">
+                We don't deal in vanity metrics. We deal in pipeline, acquisition, and compounding revenue.
               </p>
             </div>
           </FadeIn>
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            <StatsCounter value={150} suffix="+" label="Clients Served" light />
+          <div className="grid grid-cols-2 gap-x-8 gap-y-16 md:grid-cols-4">
+            <StatsCounter value={150} suffix="+" label="Ambitious Brands" light />
             <StatsCounter value={98} suffix="%" label="Client Retention" light />
-            <StatsCounter value={3} suffix="x" label="Avg. ROI Increase" light />
+            <StatsCounter value={3} suffix="x" label="Average ROI Lift" light />
             <StatsCounter value={5} suffix="M+" label="Emails Sent Monthly" light />
           </div>
         </div>
-      </section >
+      </section>
 
       {/* ===== 4-STEP PROCESS (IMPRESSION DIGITAL STYLE Edge-to-Edge Cards) ===== */}
-      < section className="relative w-full overflow-hidden py-24 bg-white" >
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-16 text-center">
-          <h2 className="text-3xl font-bold text-dark sm:text-4xl lg:text-5xl">
-            Our Proven 4-Step Process
-          </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
-            Strategy first. Execution second. Results always.
-          </p>
+      {/* ===== 4-STEP PROCESS (AGENCY STYLE Edge-to-Edge) ===== */}
+      <section className="relative w-full overflow-hidden bg-dark text-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 lg:py-32">
+          <div className="mb-16">
+            <h2 className="text-4xl font-black sm:text-6xl tracking-tighter text-white">
+              The Engine.
+            </h2>
+            <p className="mt-6 text-xl text-gray-400 max-w-2xl font-medium border-l-4 border-secondary pl-6">
+              Strategy first. Execution second. Constant iteration forever. This is how we scale brands.
+            </p>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 min-h-[600px] w-full border-y border-gray-100">
+        
+        {/* Edge to Edge grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full border-y border-white/10">
           {[
             {
               step: "01",
-              title: "Discover & Audit",
-              desc: "Deep dive into your brand, audience, competitors, and goals to find growth opportunities.",
-              color: "bg-primary text-white", // Brand Primary
-              image: "/images/process-discover.png",
-              category: "Analytics",
+              title: "Forensic Audit",
+              desc: "Deep dive into your brand, audience, competitors, and past data to find massive growth gaps.",
+              color: "bg-primary text-white", 
             },
             {
               step: "02",
               title: "Strategic Roadmap",
-              desc: "Build a tailored growth roadmap aligned with your business objectives and revenue targets.",
-              color: "bg-secondary text-dark", // Brand Secondary
-              image: "/images/process-strategise.png",
-              category: "Strategy",
+              desc: "Build a ruthless, tailored growth plan aligned strictly with your overriding revenue targets.",
+              color: "bg-secondary text-dark", 
             },
             {
               step: "03",
-              title: "Execute & Launch",
-              desc: "Launch high-converting campaigns across Email, SEO, and Social channels with precision.",
-              color: "bg-gray-100 text-dark", // Light Gray
-              image: "/images/process-execute.png",
-              category: "Execution",
+              title: "Aggressive Execution",
+              desc: "Launch high-converting sprint campaigns across Email, SEO, and Social channels with surgical precision.",
+              color: "bg-white text-dark", 
             },
             {
               step: "04",
-              title: "Measure & Optimise",
-              desc: "Track ROI, test new angles, refine strategies, and scale what works for compounding growth.",
-              color: "bg-dark text-white", // Dark Charcoal
-              image: "/images/process-optimise.png",
-              category: "Growth",
+              title: "Relentless Scale",
+              desc: "Track ROI, test radical new angles, kill what fails, and scale what works for compounding growth.",
+              color: "bg-dark text-white", 
             },
           ].map((step, i) => (
             <motion.div
               key={step.title}
-              className={`relative flex flex-col justify-between p-8 xl:p-12 overflow-hidden group ${step.color}`}
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
+              className={`relative flex flex-col justify-between p-10 xl:p-14 min-h-[450px] group overflow-hidden ${step.color} border-r border-white/10 last:border-r-0`}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              {/* Background Product Image Mockup behind text but pinned to top or middle */}
-              <div className="absolute inset-x-0 -top-8 h-64 overflow-hidden opacity-90 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal">
-                <Image
-                  src={step.image}
-                  alt={step.title}
-                  fill
-                  className="object-cover object-bottom mask-image-gradient"
-                />
-                {/* Gradient overlay to fade into card color */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[${step.color.includes("primary") ? "#4F57DF" :
-                    step.color.includes("secondary") ? "#FDD63B" :
-                      step.color.includes("gray-100") ? "#f3f4f6" : "#2B2D42"
-                    }] opacity-90`}
-                />
+              {/* Massive Number Overlay */}
+              <div className="absolute top-10 right-4 z-0 text-[10rem] font-black opacity-10 leading-none select-none tracking-tighter">
+                {step.step}
               </div>
 
-              {/* Ensure text sits above image */}
-              <div className="relative mt-48 lg:mt-56 z-10 flex flex-col h-full justify-end">
+              {/* Ensure text sits above background */}
+              <div className="relative z-10 flex flex-col h-full justify-end">
                 <div>
                   <div className="mb-4 text-sm font-bold tracking-widest uppercase opacity-70">
-                    Step {step.step}
+                    Phase {step.step}
                   </div>
-                  <h3 className="mb-6 text-3xl font-bold leading-tight">
+                  <h3 className="mb-6 text-3xl font-black leading-tight tracking-tight">
                     {step.title}
                   </h3>
-                  <div className="mb-8 grid grid-cols-2 gap-4 text-sm opacity-80">
-                    <div>
-                      <div className="uppercase tracking-wider text-[10px] font-bold opacity-70 mb-1">Focus</div>
-                      <div className="font-medium font-serif italic text-base">{step.category}</div>
-                    </div>
-                  </div>
-                  <p className="text-base leading-relaxed opacity-90">
+                  <div className="w-12 h-1 bg-current opacity-30 mb-8" />
+                  <p className="text-lg leading-relaxed opacity-90 font-medium">
                     {step.desc}
                   </p>
                 </div>
               </div>
 
               {/* Decorative hover arrow */}
-              <div className="absolute top-1/2 -right-12 mt-32 w-8 transform -translate-y-1/2 opacity-0 transition-all duration-300 group-hover:right-6 group-hover:opacity-100 hidden md:block">
+              <div className="absolute bottom-10 right-10 w-8 opacity-0 transition-all duration-300 group-hover:right-6 group-hover:opacity-100 hidden md:block">
                 <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
             </motion.div>
@@ -493,9 +489,19 @@ export default function HomePage() {
         </div>
       </section >
 
-      {/* ===== CTA & CONTACT FORM — CLEAN CORPORATE ===== */}
-      < section className="relative py-28 lg:py-40 overflow-hidden bg-soft-gray border-t border-gray-200" >
-        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-30 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      {/* ===== CTA & CONTACT FORM — CREATIVE AGENCY ===== */}
+      <section className="relative py-28 lg:py-40 overflow-hidden bg-dark border-t border-white/10 selection:bg-secondary selection:text-dark">
+        <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] bg-center opacity-10 mix-blend-overlay" />
+        
+        {/* Massive Yellow Blob behind form */}
+        <motion.div
+           className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary rounded-[40%_60%_70%_30%/40%_50%_60%_50%] opacity-20 blur-3xl mix-blend-screen pointer-events-none"
+           animate={{
+             rotate: [0, 90, 180, 270, 360],
+             scale: [1, 1.2, 0.9, 1.1, 1],
+           }}
+           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -507,10 +513,10 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="inline-block py-1.5 px-3 rounded-full bg-secondary/20 border border-secondary/30 text-secondary-dark text-sm font-semibold mb-6 tracking-wide uppercase">
-                  Let's Work Together
+                <span className="inline-block py-2 px-4 rounded-full bg-secondary text-dark text-sm font-black mb-6 tracking-widest uppercase shadow-[0_0_20px_rgba(253,214,59,0.4)]">
+                  Ready to Scale?
                 </span>
-                <h2 className="text-4xl font-bold text-dark sm:text-5xl lg:text-6xl leading-tight mb-6">
+                <h2 className="text-4xl font-black text-white sm:text-5xl lg:text-7xl leading-[1.1] mb-8 tracking-tighter">
                   Ready to Build a{" "}
                   <span className="text-primary block mt-2">
                     Growth Engine?
